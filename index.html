@@ -3,21 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sistema de Gestión de Encomiendas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
   <body>
-    <div class="container">
-      <label>Login</label>
-      <input type="Text" id="Login" />
-
-      <label>Contraseña</label>
-      <input type="password" id="Contrasenia" />
-
-      <button type="submit" id="Enviar" value="Enviar">Enviar</button>
+    <div class="image-container">
+      <img src="https://img.freepik.com/fotos-premium/transporte-entrega-paquetes-encomiendas_933496-5154.jpg" alt="Transporte y entrega de paquetes" />
     </div>
+
+    <div class="container">
+      <h1 class="text-center">SISTEMA DE GESTIÓN DE ENCOMIENDAS</h1>
+      <label for="Login">Login</label>
+      <input type="text" id="Login" class="form-control" />
+
+      <label for="Contrasenia">Contraseña</label>
+      <input type="password" id="Contrasenia" class="form-control" />
+
+      <button type="submit" id="Enviar" class="btn btn-primary">Enviar</button>
+    </div>
+
     <div class="Respuesta"></div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="wsLogIn.js"></script>
   </body>
 </html>
