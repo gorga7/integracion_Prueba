@@ -302,3 +302,12 @@ button:hover {
         max-width: none;
     }
 }
+
+.input-field {
+    width: 100%; /* Ajusta el ancho al contenedor */
+    padding: 8px; /* Espaciado interno para mayor comodidad */
+    margin-bottom: 10px; /* Espacio entre los campos */
+    border: 1px solid #ccc; /* Borde similar al de Bootstrap */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}

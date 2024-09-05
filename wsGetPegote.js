@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Configura la petición para obtener el pegote
       const getPegoteUrl =
-        "https://altis-ws.grupoagencia.com:444/JAgencia/JAgencia.asmx/wsGetPegote";
+        "https://altis-ws.grupoagencia.com:444/JAgenciaQA/JAgencia.asmx/wsGetPegote";
       const getPegoteParams = {
         K_Oficina: document.getElementById("K_Oficina").value,
         K_Guia: document.getElementById("K_Guia").value,

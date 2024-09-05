@@ -76,7 +76,7 @@
                 <option value="2" >Cuenta Corriente</option>
                 <option value="4">Flete Destino</option>
             </select>
-            <br><br>
+            <br>
     
             <label for="K_Tipo_Envio">Tipo de envio</label>
             <br>
@@ -87,7 +87,7 @@
                 <option value="3">Sobre</option>
                 <option value="4">Producto</option>
             </select>
-            <br><br>
+            <br>
     
             <label for="Entrega">Entrega:</label>
             <select autocomplete="off" class="form-select" name="Entrega">
@@ -96,15 +96,15 @@
                 <option value="2">Domicilio</option>
                 
             </select>
-            <br><br>
+            <br>
     
     
             <label for="F_Recoleccion">Fecha de recolección:</label>
     <br>
-    <input type="date" id="F_Recoleccion" class="form-input" /><br /><br>
+    <input type="date" id="F_Recoleccion" class="form-input" /><br />
     
             <label for="K_Domicilio_Recoleccion">Domicilio de recoleccion:</label>
-            <input type="number" id="K_Domicilio_Recoleccion" /><br />
+            <input placeholder="Opcional" type="number" id="K_Domicilio_Recoleccion" /><br />
     
             <label for="D_Cliente_Remitente">Remitente:</label>
             <input
@@ -120,10 +120,10 @@
               value="092737362"
               id="Telefono_Remitente"
               required
-            /><br />
+            />
     
-            <label for="K_Cliente_Destinatario">Nro. Cliente Destinatario</label>
-            <input
+            <!-- <label for="K_Cliente_Destinatario">Nro. Cliente Destinatario</label> -->
+            <input style="display: none;"
               type="number"
               value="5"
               id="K_Cliente_Destinatario"
@@ -137,58 +137,66 @@
               id="Cliente_Destinatario"
               required
             /><br />
-    
-            <label for="Direccion_Destinatario">Direccion del destinatario:</label>
-            <input type="text" id="Direccion_Destinatario" required /><br />
-    
+            
             <label for="Telefono">Telefono destinatario:</label>
             <input type="text" value="092737362" id="Telefono" required /><br />
     
-            <label for="RUT">RUT:</label>
-            <input type="text" id="RUT" required /><br /><br />
+            <label for="Direccion_Destinatario">Direccion del destinatario:</label>
+            <input placeholder="ej: 18 de julio 1234, Montevideo, Montevideo" type="text" id="Direccion_Destinatario" required /><br />
     
+            <label for="Observaciones">Observaciones:</label>
+            <input type="text" placeholder="Opcional" id="Observaciones" required />
+    
+            <label for="RUT">RUT:</label>
+            <input type="text" placeholder="Opcional" id="RUT" required /><br />
+    
+            <label >Agencia:</label>
             <select class="form-select" aria-label="Default select example" id="sucursales">
+            
             <option selected disabled>Seleccione Sucursal</option>
             
             </select>
     
        
     
-            <label for="Paquetes_Ampara">Cantidad total de paquetes</label>
-            <input type="text" id="Paquetes_Ampara" required /><br />
+            <label for="Paquetes_Ampara">Cantidad total de paquetes:</label>
+            <input placeholder="Indicá la cantidad TOTAL de etiquetas que necesitas" type="text" id="Paquetes_Ampara" required /><br />
     
             <label for="Detalle_Paquetes">Detalle de Paquetes:</label>
-            <div id="paquetesContainer"></div>
             <div class="inputs-container">
-              <button type="button" id="agregarPaquete">Agregar Paquete</button>
-              <br />
+                <button type="button" id="agregarPaquete">Agregar Paquete</button>
             </div>
-            <label for="Observaciones">Observaciones:</label>
-            <input type="text" id="Observaciones" required /><br />
+            <div id="paquetesContainer"></div>
     
-            <label for="CostoMercaderia">Costo de mercaderia:</label>
-            <input type="text" id="CostoMercaderia" required /><br />
+            <!-- <label for="CostoMercaderia">Costo de mercaderia:</label> -->
+            <input style="display: none;" type="text" id="CostoMercaderia" required />
     
-            <label for="Referencia_Pago">Referencia de pago:</label>
-            <input type="text" id="Referencia_Pago" required /><br />
+            <!-- <label for="Referencia_Pago">Referencia de pago:</label> -->
+            <input style="display: none;" type="text" id="Referencia_Pago" required />
     
-            <label for="CodigoPedido">Codigo de pedido:</label>
-            <input type="text" id="CodigoPedido" required /><br />
+            <!-- <label for="CodigoPedido">Codigo de pedido:</label> -->
+            <input style="display: none;" type="text" id="CodigoPedido" required />
     
-            <label for="Serv_DDF">Servicio Dev. Doc. Firmado:</label>
-            <input type="text" id="Serv_DDF" required /><br />
+            <!-- <label for="Serv_DDF">Servicio Dev. Doc. Firmado:</label> -->
+            <input style="display: none;" type="text" id="Serv_DDF" required />
     
-            <label for="Serv_Cita">Serv Cita:</label>
-            <input type="text" id="Serv_Cita" required /><br />
+            <!-- <label for="Serv_Cita">Serv Cita:</label> -->
+            <input style="display: none;" type="text" id="Serv_Cita" required />
     
-            <label for="Latitud_Destino">Latitud de Destino:</label>
-            <input type="text" id="Latitud_Destino" required /><br />
+            <!-- <label for="Latitud_Destino">Latitud de Destino:</label> -->
+            <input style="display: none;" type="text" id="Latitud_Destino" required /><br />
     
-            <label for="Longitud_Destino">Longitud de Destino:</label>
-            <input type="text" id="Longitud_Destino" required /><br />
+            <!-- <label for="Longitud_Destino">Longitud de Destino:</label> -->
+            <input style="display: none;" type="text" id="Longitud_Destino" required />
+
+
+
+
             <div class="inputs-container">
               <button  id="btnCrearEnvio">Crear envío</button>
             </div>
+
+
           </form>
     
           <p id="Respuesta"></p>

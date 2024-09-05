@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Realizar la solicitud fetch al endpoint proporcionado
     fetch(
-      "https://altis-ws.grupoagencia.com:444/JAgencia/JAgencia.asmx/wsRastreoGuia",
+      "https://altis-ws.grupoagencia.com:444/JAgenciaQA/JAgencia.asmx/wsRastreoGuia",
       requestOptions
     )
       .then((response) => {

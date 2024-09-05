@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
               console.error("Error en el servidor (500 Internal Server Error). Detalles:", error.message);
           } else {
               console.error("Error:", error.message);
-              Respuesta.innerText = "Error desconocido: " + error.message;
+              Respuesta.innerText = "Posible error, FALTA INDICAR CANTIDAD Y DETALLE DE PAQUETES: " + error.message;
           }
       }
       handleResponse();
@@ -157,45 +157,54 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     document.getElementById("agregarPaquete").addEventListener("click", function () {
-      const paqueteDiv = document.createElement("div");
-      paqueteDiv.classList.add("paqueteDiv");
-  
-      const tipoInput = document.createElement("input");
-      tipoInput.type = "text";
-      tipoInput.placeholder = "Tipo";
-      tipoInput.classList.add("tipoPaquete");
-  
-      const cantidadInput = document.createElement("input");
-      cantidadInput.type = "number";
-      cantidadInput.placeholder = "Cantidad";
-      cantidadInput.classList.add("cantidadPaquete");
-  
-      paqueteDiv.appendChild(tipoInput);
-      paqueteDiv.appendChild(cantidadInput);
-  
-      document.getElementById("paquetesContainer").appendChild(paqueteDiv);
+        // Crea un contenedor para el nuevo par de campos y el <hr>
+        const paqueteDiv = document.createElement("div");
+        paqueteDiv.classList.add("paqueteDiv");
+    
+        // Crea el campo para el tipo de paquete
+        const tipoInput = document.createElement("input");
+        tipoInput.type = "text";
+        tipoInput.placeholder = "Tipo de paquete";
+        tipoInput.classList.add("tipoPaquete");
+    
+        // Crea el campo para la cantidad de etiquetas
+        const cantidadInput = document.createElement("input");
+        cantidadInput.type = "number";
+        cantidadInput.placeholder = "Cantidad de etiquetas";
+        cantidadInput.classList.add("cantidadPaquete");
+    
+        // Añade los campos al contenedor
+        paqueteDiv.appendChild(tipoInput);
+        paqueteDiv.appendChild(cantidadInput);
+    
+        // Crea y añade un <hr> al final
+        const hr = document.createElement("hr");
+        paqueteDiv.appendChild(hr);
+    
+        // Añade el contenedor al contenedor principal en el DOM
+        document.getElementById("paquetesContainer").appendChild(paqueteDiv);
     });
-  
+    
     function getPaquetes() {
-      const paquetesDivs = document.querySelectorAll(".paqueteDiv");
-      paquetes = [];
-  
-      paquetesDivs.forEach((div) => {
-          const tipoInput = div.querySelector(".tipoPaquete");
-          const cantidadInput = div.querySelector(".cantidadPaquete");
-  
-          const tipo = tipoInput ? tipoInput.value.trim() : "";
-          const cantidad = cantidadInput ? parseInt(cantidadInput.value, 10) : 0;
-  
-          if (tipo && !isNaN(cantidad) && cantidad > 0) {
-              paquetes.push({
-                  tipo,
-                  cantidad
-              });
-          }
-      });
-  
-      return paquetes;
+        const paquetesDivs = document.querySelectorAll(".paqueteDiv");
+        let paquetes = [];  // Es una buena práctica declarar variables con let o const
+    
+        paquetesDivs.forEach((div) => {
+            const tipoInput = div.querySelector(".tipoPaquete");
+            const cantidadInput = div.querySelector(".cantidadPaquete");
+    
+            const tipo = tipoInput ? tipoInput.value.trim() : "";
+            const cantidad = cantidadInput ? parseInt(cantidadInput.value, 10) : 0;
+    
+            if (tipo && !isNaN(cantidad) && cantidad > 0) {
+                paquetes.push({
+                    tipo,
+                    cantidad
+                });
+            }
+        });
+    
+        return paquetes;
     }
   
     // Habilitar el select de sucursales cuando Entrega cambie
