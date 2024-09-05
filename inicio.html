@@ -23,44 +23,31 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
           <a class="navbar-brand" href="inicio.html">Inicio</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="envio.html"
-                  >Enviar</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="rastreo.html">Rastrear</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="ajustes.html">Ajustes</a>
-              </li>
-            </ul>
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="envio.html">Enviar</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="rastreo.html">Rastrear</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="ajustes.html">Ajustes</a>
+                  </li>
+              </ul>
+              <div class="ml-auto navbar-text">
+                  <div id="fecha-horaInicio"></div>
+                  </div>  
+                  <div id="divNombre"><p class="m-0" id="pNombre"></p>
+              </div>
+              <button id="btncerrarSesion" class="btn btn-success">Cerrar Sesión</button>
           </div>
-          <div class="navbar-text">
-    
-            <div id="fecha-horaInicio"></div>
-  
-            </div>   
-          <div id="divNombre"><p class="m-0" id="pNombre"></p></div>
-        </div>
-        <button id="btncerrarSesion">Cerrar Sesion</button>
       </nav>
-    </header>
+  </header>
 
     
     <!-- Contenido de la página de inicio -->

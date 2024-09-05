@@ -7,7 +7,7 @@ body {
 
 .container {
     width: 90%;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -25,7 +25,6 @@ body {
 h1 {
     color: #333;
     margin-bottom: 20px;
-    text-align: center; /* Alinea el título al centro */
 }
 
 .form-container {
@@ -33,8 +32,9 @@ h1 {
 }
 
 form {
-    width: 550px; /* Reducir el ancho del formulario */
-    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    width: 100%;
+    max-width: 600px; /* Ajusta el máximo ancho del formulario */
+    margin: 0 auto;
     text-align: left;
 }
 
@@ -46,46 +46,40 @@ label {
 
 input[type="number"],
 input[type="text"],
-input[type="date"].form-input {
-    width: calc(100% - 20px); /* Reducir el ancho de los inputs */
-    padding: 12px; /* Aumentar el relleno de los inputs */
-    margin-bottom: 20px; /* Aumentar el espacio entre los inputs */
-    border: 1px solid #ddd; /* Cambiar el color del borde de los inputs */
-    border-radius: 6px; /* Aumentar el radio de borde de los inputs */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Agregar transición al color del borde y sombra */
+input[type="date"],
+select.form-select {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="number"]:focus,
 input[type="text"]:focus,
-input[type="date"].form-input:focus {
-    border-color: #095c22ce; /* Cambiar el color del borde al enfocar */
-    box-shadow: 0 0 5px rgba(42, 216, 51, 0.5); /* Agregar sombra al enfocar */
+input[type="date"]:focus,
+select.form-select:focus {
+    border-color: #095c22ce;
+    box-shadow: 0 0 5px rgba(42, 216, 51, 0.5);
     outline: none;
 }
 
 #divNombre {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipo de fuente */
-    font-size: 14px; /* Tamaño de fuente */
-    color: #fff; /* Color del texto */
-    padding: 0.5%;/* Espacio alrededor del texto */
-    border-radius: 25px; /* Bordes redondeados */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-    display: inline-block; /* Mostrar como bloque en línea */
-    transition: background-color 0.3s ease; /* Transición de color de fondo */
-    line-height: 0.5;
+    font-size: 14px;
+    color: #fff;
+    padding: 0.5%;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    transition: background-color 0.3s ease;
 }
-
-
 
 #divNombre:hover {
-    background-color: #0056b3; /* Cambio de color de fondo al pasar el cursor */
+    background-color: #0056b3;
 }
 
-
-
-
-#btncerrarSesion{
-    width: calc(10% - 20px);
+#btncerrarSesion {
     padding: 10px;
     font-size: 14px;
     color: #fff;
@@ -93,24 +87,24 @@ input[type="date"].form-input:focus {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    
-
 }
-#btncerrarSesion:hover{
-    background-color: #095c22ce; /* Cambio de color de fondo al pasar el cursor */
+
+#btncerrarSesion:hover {
+    background-color: #095c22ce;
 }
 
 .buttons-container {
-    text-align: center; /* Alinea los botones horizontalmente */
+    text-align: center;
     margin-top: 20px;
 }
 
 .buttons-container button {
-    width: 200px; /* Establece un ancho fijo para todos los botones */
-    margin: 0 5px; /* Ajusta el espacio entre los botones */
+    width: calc(100% - 20px);
+    max-width: 200px;
+    margin: 0 5px;
 }
+
 button {
-    width: calc(50% - 20px);
     padding: 10px;
     font-size: 14px;
     color: #fff;
@@ -126,8 +120,9 @@ button:hover {
 }
 
 #Respuesta {
-    width: 50%; /* Reducir el ancho del formulario */
-    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     margin-top: 20px;
     padding: 15px;
     border-radius: 4px;
@@ -140,14 +135,12 @@ button:hover {
 #K_Oficina,
 #K_Guia,
 #CodigoPedidoPegote {
-    width: calc(50% - 8px); /* Divide el ancho en dos y reduce el margen */
+    width: calc(100% - 20px);
     margin-bottom: 20px;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 6px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    display: inline-block; /* Alinea los inputs horizontalmente */
-    vertical-align: top; /* Alinea los inputs verticalmente */
 }
 
 #K_Oficina:focus,
@@ -159,21 +152,20 @@ button:hover {
 }
 
 #btnObtenerPegote {
-    width: calc(50% - 8px); /* Divide el ancho en dos y reduce el margen */
-    padding: 10px; /* Reduce el padding para achicar el botón */
+    padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #28a745; /* Cambiar color de fondo */
+    background-color: #28a745;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    display: inline-block; /* Alinea el botón horizontalmente */
-    vertical-align: top; /* Alinea el botón verticalmente */
+    display: block;
+    width: calc(100% - 20px);
 }
 
 #btnObtenerPegote:hover {
-    background-color: #218838; /* Cambiar color de fondo al pasar el ratón */
+    background-color: #218838;
 }
 
 .inputs-container {
@@ -183,84 +175,46 @@ button:hover {
 
 .inputs-container label,
 .inputs-container input[type="text"],
-.inputs-container input[type="number"] {
+.inputs-container input[type="number"],
+.inputs-container select.form-select {
     display: block;
     margin-bottom: 10px;
     width: 100%;
-}
-
-.inputs-container button {
-    width: calc(100% - 20px);
 }
 
 .table-wrapper {
     overflow-x: auto;
 }
 
-.response-table {
+.response-table,
+.historial-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
 .response-table th,
-.response-table td {
-    border: 1px solid #dddddd;
-    padding: 10px;
-}
-
-.response-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-/* Estilos para filas impares */
-.response-table tr:nth-child(odd) td {
-    background-color: #f9f9f9;
-}
-
-/* Estilos para filas al pasar el ratón */
-.response-table tr:hover {
-    background-color: #e2e2e2;
-}
-
-/* Estilos para la primera columna (claves) */
-.response-table td:first-child {
-    font-weight: bold;
-}
-
-/* Estilos para la última columna (valores) */
-.response-table td:last-child {
-    font-style: italic;
-}
-
-
-.historial-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-/* Estilos para las celdas de la tabla de historial */
-.historial-table th, .historial-table td {
+.response-table td,
+.historial-table th,
+.historial-table td {
     border: 1px solid #dddddd;
     padding: 8px;
-    text-align: left;
 }
 
-/* Estilos para la primera fila (encabezado) de la tabla de historial */
+.response-table th,
 .historial-table th {
     background-color: #f2f2f2;
+    font-weight: bold;
 }
 
-/* Estilos para las filas impares de la tabla de historial */
+.response-table tr:nth-child(odd),
 .historial-table tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
-/* Estilos para las filas pares de la tabla de historial */
-.historial-table tr:nth-child(even) {
-    background-color: #ffffff;
+.response-table tr:hover,
+.historial-table tr:hover {
+    background-color: #e2e2e2;
 }
 
 #estado-guia {
@@ -273,39 +227,27 @@ button:hover {
     text-align: center;
 }
 
-/* Efecto hover */
 #estado-guia:hover {
     background-color: #ca9191;
-    size: 200px;
 }
 
 #fecha-hora,
- #fecha-horaEnvio,
- #fecha-horaInicio,
- #fecha-horaRastreo,
- #fecha-horaAjustes {
+#fecha-horaEnvio,
+#fecha-horaInicio,
+#fecha-horaRastreo,
+#fecha-horaAjustes {
     font-size: 14px;
     color: #947373;
-    padding: 10px 20px; /* Ajusta el padding */
+    padding: 10px 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Centra horizontalmente */
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    text-align: center;
+    margin: 0 auto;
 }
 
 #settings-menu {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     float: left;
 }
 
@@ -326,21 +268,37 @@ h1 {
 }
 
 #settings-content {
-    margin-left: 220px;
+    margin-left: 0;
     padding: 20px;
+    margin-left: 220px;
 }
 
-select.form-select {
-    width: calc(100% - 20px); /* Reducir el ancho del select */
-    padding: 12px; /* Aumentar el relleno */
-    margin-bottom: 20px; /* Aumentar el espacio entre los select */
-    border: 1px solid #ddd; /* Cambiar el color del borde */
-    border-radius: 6px; /* Aumentar el radio de borde */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Agregar transición al color del borde y sombra */
-}
+@media (max-width: 768px) {
+    #settings-menu {
+        width: 100%;
+        float: none;
+    }
 
-select.form-select:focus {
-    border-color: #095c22ce; /* Cambiar el color del borde al enfocar */
-    box-shadow: 0 0 5px rgba(29, 88, 11, 0.5); /* Agregar sombra al enfocar */
-    outline: none;
+    #settings-content {
+        margin-left: 0;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    button,
+    #btnObtenerPegote,
+    #btncerrarSesion {
+        width: 100%;
+        max-width: none;
+    }
 }
