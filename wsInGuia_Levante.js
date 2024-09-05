@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
           // Obtiene el valor de 'Entrega'
           const Entrega = document.querySelector('select[name="Entrega"]').value;
   
+
+          
+
+
           // Validaciones y ajuste de valores
           if (Entrega == 1) {
               // Entrega = 1: K_Oficina_Destino debe tener un valor
@@ -141,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
               console.error("Error en el servidor (500 Internal Server Error). Detalles:", error.message);
           } else {
               console.error("Error:", error.message);
-              Respuesta.innerText = "Posible error, FALTA INDICAR CANTIDAD Y DETALLE DE PAQUETES: " + error.message;
+              Respuesta.innerText = "ES POSIBLE QUE FALTE INDICAR CANTIDAD TOTAL Y DETALLE DE PAQUETES: \n" + "Mensaje de error: \n" + error.message;
           }
       }
       handleResponse();
