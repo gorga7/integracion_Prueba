@@ -64,10 +64,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
   // Maneja el evento de presionar Enter en el formulario
-  Contrasenia.addEventListener('keypress', function (e) {
+  Contrasenia.addEventListener('keypress', async function (e) {
       if (e.key === 'Enter') {
           e.preventDefault(); // Evita el comportamiento predeterminado del Enter
-          enviarDatos();
+         await enviarDatos();
       }
   });
 });
