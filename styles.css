@@ -1,3 +1,7 @@
+*{
+    /* border: 1px solid red; */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -7,14 +11,19 @@ body {
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    /* max-width: 1200px;
+    min-width: 300px; Ajusta según sea necesario */
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
 
 .logo {
     width: 150px;
@@ -27,37 +36,81 @@ h1 {
     margin-bottom: 20px;
 }
 
-.form-container {
-    margin-bottom: 50px;
+.container-form{
+    width: 60%;
 }
 
-form {
-    width: 100%;
-    max-width: 600px; /* Ajusta el máximo ancho del formulario */
-    margin: 0 auto;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-}
-
-input[type="number"],
-input[type="text"],
-input[type="date"],
-select.form-select {
-    width: calc(100% - 20px);
-    padding: 12px;
+.form-section {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: auto;
     margin-bottom: 20px;
+    width: 100%;
+}
+
+.section-title {
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.section-content label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.section-content input,
+.section-content select {
+    width: 100%;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="number"]:focus,
+.section-content input:focus,
+.section-content select:focus {
+    border-color: #095c22ce;
+    box-shadow: 0 0 5px rgba(42, 216, 51, 0.5);
+    outline: none;
+}
+
+.inputs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 input[type="text"]:focus,
+input[type="number"]:focus,
 input[type="date"]:focus,
 select.form-select:focus {
     border-color: #095c22ce;
@@ -87,6 +140,7 @@ select.form-select:focus {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #btncerrarSesion:hover {
@@ -105,8 +159,8 @@ select.form-select:focus {
 }
 
 button {
-    padding: 10px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 16px;
     color: #fff;
     background-color: #489d5a;
     border: none;
@@ -122,8 +176,7 @@ button:hover {
 #Respuesta {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px auto 0;
     padding: 15px;
     border-radius: 4px;
     background-color: #eeeded;
@@ -135,12 +188,12 @@ button:hover {
 #K_Oficina,
 #K_Guia,
 #CodigoPedidoPegote {
-    width: calc(100% - 20px);
-    margin-bottom: 20px;
+    width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 6px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px;
 }
 
 #K_Oficina:focus,
@@ -161,60 +214,103 @@ button:hover {
     cursor: pointer;
     transition: background-color 0.3s ease;
     display: block;
-    width: calc(100% - 20px);
+    width: 100%;
 }
 
 #btnObtenerPegote:hover {
     background-color: #218838;
 }
 
-.inputs-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.inputs-container label,
-.inputs-container input[type="text"],
-.inputs-container input[type="number"],
-.inputs-container select.form-select {
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
 .table-wrapper {
     overflow-x: auto;
 }
 
-.response-table,
-.historial-table {
+#output-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#output-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.response-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
 .response-table th,
-.response-table td,
+.response-table td {
+    border: 1px solid #dddddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.response-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.response-table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.response-table tr:hover {
+    background-color: #e2e2e2;
+}
+
+@media (max-width: 768px) {
+    .response-table {
+        font-size: 14px;
+    }
+}
+
+#historial-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.historial-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
 .historial-table th,
 .historial-table td {
     border: 1px solid #dddddd;
-    padding: 8px;
+    padding: 12px;
+    text-align: left;
 }
 
-.response-table th,
 .historial-table th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
 
-.response-table tr:nth-child(odd),
 .historial-table tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
-.response-table tr:hover,
 .historial-table tr:hover {
     background-color: #e2e2e2;
+}
+
+@media (max-width: 768px) {
+    .historial-table {
+        font-size: 14px;
+    }
 }
 
 #estado-guia {
@@ -268,9 +364,8 @@ button:hover {
 }
 
 #settings-content {
-    margin-left: 0;
-    padding: 20px;
     margin-left: 220px;
+    padding: 20px;
 }
 
 @media (max-width: 768px) {
@@ -283,16 +378,13 @@ button:hover {
         margin-left: 0;
     }
 
-    .container {
-        width: 95%;
-    }
-
-    .logo {
-        width: 120px;
-    }
 
     form {
         width: 100%;
+        max-width: 800px; /* O el valor que prefieras */
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     button,
@@ -303,11 +395,9 @@ button:hover {
     }
 }
 
-.input-field {
-    width: 100%; /* Ajusta el ancho al contenedor */
-    padding: 8px; /* Espaciado interno para mayor comodidad */
-    margin-bottom: 10px; /* Espacio entre los campos */
-    border: 1px solid #ccc; /* Borde similar al de Bootstrap */
-    border-radius: 4px; /* Bordes redondeados */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+
+#movable-button {
+    position: absolute;
+    padding: 15px 30px;
+    font-size: 18px;
 }

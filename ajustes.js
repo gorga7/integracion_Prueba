@@ -1,4 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    const button = document.getElementById('movable-button');
+    const speed = 3; // Ajusta la velocidad de movimiento
+    const amplitude = 200; // Amplitud del movimiento en píxeles
+    const frequency = 0.02; // Frecuencia del movimiento
+
+    let angle = 0; // Ángulo para la animación sinusoidal
+
+    function moveButton(timestamp) {
+        // Calcula la nueva posición del botón usando una función sinusoidal para movimiento suave
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const buttonWidth = button.offsetWidth;
+        const buttonHeight = button.offsetHeight;
+
+        angle += speed;
+
+        const x = (viewportWidth - buttonWidth) / 2 + amplitude * Math.sin(frequency * angle);
+        const y = (viewportHeight - buttonHeight) / 2 + amplitude * Math.cos(frequency * angle);
+
+        button.style.left = `${x}px`;
+        button.style.top = `${y}px`;
+
+        // Continúa la animación
+        requestAnimationFrame(moveButton);
+    }
+
+    // Inicia la animación
+    requestAnimationFrame(moveButton);
+
+
+
     //Actualizar fecha en tiempo real
     function actualizarFechaHora() {
         var fechaHoraActual1 = new Date();
