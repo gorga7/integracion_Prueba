@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-
-
-
-  //WEBSERVICE PARA RASTREAR UN ENVÍO
+  // WEBSERVICE PARA RASTREAR UN ENVÍO
   document.getElementById("formulario").addEventListener("submit", function (event) {
     event.preventDefault(); // Evitar que el formulario se envíe automáticamente
 
@@ -67,46 +63,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const estadoGuia = document.getElementById("estado-guia");
         estadoGuia.addEventListener("click", () => {
-          mostrarHistorial(data.dataHistoria);
+          // Toggle visibility
+          const historialContainer = document.getElementById("historial-container");
+          if (historialContainer.style.display === "block") {
+            // Hide the container
+            historialContainer.style.display = "none";
+          } else {
+            // Show the container and populate it
+            mostrarHistorial(data.dataHistoria);
+            historialContainer.style.display = "block";
+          }
         });
       })
       .catch((error) => {
         // Manejar los errores de red y otros errores aquí
         console.error("Error:", error.message);
-        // No podemos acceder a 'data' aquí, ya que está fuera del alcance
-        // console.log(data)
-        // Podríamos mostrar un mensaje de error en algún elemento del DOM si es necesario
-        // document.getElementById('respuesta').innerText = 'Error desconocido';
       });
   });
 
-  function showResponse(responseData) {
-    // Llenar los datos en la tabla
-    document.getElementById("cliente-remitente").textContent =
-      responseData.clienteRemitente;
-    document.getElementById("destinatario").textContent =
-      responseData.destinatario;
-    document.getElementById("d-tipo-guia").textContent = responseData.dTipoGuia;
-    document.getElementById("d-tipo-envio").textContent = responseData.dTipoEnvio;
-    document.getElementById("cantidad-paquetes").textContent =
-      responseData.cantidadPaquetes;
-    document.getElementById("d-tipo-entrega").textContent =
-      responseData.dTipoEntrega;
-    document.getElementById("oficina-destino").textContent =
-      responseData.oficinaDestino;
-    document.getElementById("estado-guia").textContent = responseData.estadoGuia;
-  }
-
   function mostrarHistorial(dataHistoria) {
-    // Suponiendo que tienes un elemento HTML donde mostrarás el historial de movimientos de estado
     const historialContainer = document.getElementById("historial-container");
-    historialContainer.innerHTML = ""; // Limpiar cualquier contenido previo
 
-    // Crear una tabla para el historial
+    if (!historialContainer) {
+      console.error("El contenedor de historial no existe en el DOM.");
+      return;
+    }
+
+    // Limpiar cualquier contenido previo
+    historialContainer.innerHTML = "";
+
     const historialTable = document.createElement("table");
     historialTable.classList.add("historial-table");
 
-    // Crear el encabezado de la tabla
     const headerRow = document.createElement("tr");
     const headers = ["Estado", "Oficina", "Fecha y Hora"];
     headers.forEach((headerText) => {
@@ -134,4 +122,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Agregar la tabla de historial al contenedor
     historialContainer.appendChild(historialTable);
   }
-})
+
+  document.getElementById('formulario').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Lógica para procesar los datos aquí
+    console.log('Formulario de rastreo enviado');
+  });
+
+  document.getElementById('enviar').addEventListener('click', function(event) {
+    event.preventDefault();
+    // Lógica para procesar los datos aquí
+    console.log('Formulario de obtención de guías enviado');
+  });
+});

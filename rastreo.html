@@ -15,161 +15,163 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="inicio.html">Inicio</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="envio.html">Enviar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="rastreo.html">Rastrear</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="ajustes.html">Ajustes</a>
-            </li>
-          </ul>
-          <div class="ml-auto navbar-text">
-            <div id="fecha-horaRastreo"></div>
-          </div>  
-          <div id="divNombre"><p class="m-0" id="pNombre"></p></div>
-          <button id="btncerrarSesion" class="btn btn-success">Cerrar Sesión</button>
-        </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
+          <a class="navbar-brand" href="inicio.html">Inicio</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="envio.html">Enviar</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="rastreo.html">Rastrear</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="ajustes.html">Ajustes</a>
+                  </li>
+              </ul>
+              <div class="ml-auto d-flex align-items-center">
+                  <div id="fecha-horaRastreo" class="mr-3 text-light font-italic">Fecha y Hora</div>
+                  <div id="divNombre" class="mr-3 d-flex align-items-center">
+                      <div class="welcome-container">
+                          <p class="m-0 welcome-text">Bienvenido, Usuario</p>
+                      </div>
+                  </div>
+                  <button id="btncerrarSesion" class="btn btn-light">Cerrar Sesión</button>
+              </div>
+          </div>
       </nav>
-    </header>
+  </header>
 
-    <div class="container">
+    <div class="container mt-4">
       <h1>Rastrea Envío</h1>
 
       <div class="container-form">
-        <form id="formulario" class="form-section">
-          <div class="section-content">
-            <div class="input-group">
-              <label for="K_Oficina_Origen">Oficina de Origen:</label>
-              <input type="text" id="K_Oficina_Origen" name="K_Oficina_Origen" />
-            </div>
-
-            <div class="input-group">
-              <label for="K_GuiaRastreo">Número de Guía:</label>
-              <input type="text" id="K_GuiaRastreo" name="K_Guia" />
-            </div>
+        <form id="formulario" class="form-section row">
+          <div class="col-md-6 mb-3">
+            <label for="K_Oficina_Origen">Oficina de Origen:</label>
+            <input type="text" class="form-control" id="K_Oficina_Origen" name="K_Oficina_Origen" />
           </div>
 
-          <input type="text" id="Referencia" name="Referencia" style="display: none" />
-          <input type="text" id="ID_Sesion" name="ID_Sesion" style="display: none" />
+          <div class="col-md-6 mb-3">
+            <label for="K_GuiaRastreo">Número de Guía:</label>
+            <input type="text" class="form-control" id="K_GuiaRastreo" name="K_Guia" />
+          </div>
 
-          <div class="buttons-container">
-            <button type="submit">Rastrear envío</button>
+          <input type="text" id="Referencia" name="Referencia" hidden />
+          <input type="text" id="ID_Sesion" name="ID_Sesion" hidden />
+
+          <div class="col-12 text-center">
+            <button class="btn btn-success" type="submit">Rastrear envío</button>
           </div>
         </form>
       </div>
 
-      <div id="output-container">
-        <table class="response-table">
-          <tr>
-            <th>Datos</th>
-            <th>Información</th>
-          </tr>
-          <tr>
-            <td>Remitente</td>
-            <td id="cliente-remitente"></td>
-          </tr>
-          <tr>
-            <td>Destinatario</td>
-            <td id="destinatario"></td>
-          </tr>
-          <tr>
-            <td>Tipo de Guía</td>
-            <td id="d-tipo-guia"></td>
-          </tr>
-          <tr>
-            <td>Tipo de Paquete</td>
-            <td id="d-tipo-envio"></td>
-          </tr>
-          <tr>
-            <td>Cantidad de Paquetes</td>
-            <td id="cantidad-paquetes"></td>
-          </tr>
-          <tr>
-            <td>Tipo de Entrega</td>
-            <td id="d-tipo-entrega"></td>
-          </tr>
-          <tr>
-            <td>Destino</td>
-            <td id="oficina-destino"></td>
-          </tr>
-          <tr>
-            <td>Estado de la Guía</td>
-            <td id="estado-guia"></td>
-          </tr>
+      <div id="output-container" class="table-responsive mt-4">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Datos</th>
+              <th>Información</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Remitente</td>
+              <td id="cliente-remitente"></td>
+            </tr>
+            <tr>
+              <td>Destinatario</td>
+              <td id="destinatario"></td>
+            </tr>
+            <tr>
+              <td>Tipo de Guía</td>
+              <td id="d-tipo-guia"></td>
+            </tr>
+            <tr>
+              <td>Tipo de Paquete</td>
+              <td id="d-tipo-envio"></td>
+            </tr>
+            <tr>
+              <td>Cantidad de Paquetes</td>
+              <td id="cantidad-paquetes"></td>
+            </tr>
+            <tr>
+              <td>Tipo de Entrega</td>
+              <td id="d-tipo-entrega"></td>
+            </tr>
+            <tr>
+              <td>Destino</td>
+              <td id="oficina-destino"></td>
+            </tr>
+            <tr>
+              <td>Estado de la Guía</td>
+              <td id="estado-guia"></td>
+            </tr>
+          </tbody>
         </table>
+        <div id="historial-container" style="display: none" ></div>
       </div>
-      <div id="historial-container"></div>
     </div>
     <hr />
 
-    <div class="container">
+    <div class="container mt-4">
       <h1>Obtiene Guías</h1>
 
-      <div class="form-section">
-        <div class="section-content">
-          <div class="input-group">
-            <label for="K_Cliente">Cliente:</label>
-            <input type="text" id="K_Cliente" name="K_Cliente" />
-          </div>
-
-          <div class="input-group">
-            <label for="Busqueda">Búsqueda:</label>
-            <input type="text" id="Busqueda" name="Busqueda" />
-          </div>
-
-          <div class="input-group">
-            <label for="FI">Fecha Inicial:</label>
-            <input type="text" id="FI" name="FI" />
-          </div>
-
-          <div class="input-group">
-            <label for="FF">Fecha Final:</label>
-            <input type="text" id="FF" name="FF" />
-          </div>
-
-          <div class="input-group">
-            <label for="RUT">RUT:</label>
-            <input type="text" id="RUTObtieneCostoCliente" name="RUT" required/>
-          </div>
-
-          <input type="text" id="ID_Sesion" name="ID_Sesion" style="display: none" readonly />
-
-          <div class="buttons-container">
-           
-          </div>
-          
+      <div class="form-section row">
+        <div class="col-md-6 mb-3">
+          <label for="K_Cliente">Cliente:</label>
+          <input type="text" class="form-control" id="K_Cliente" name="K_Cliente" />
         </div>
-        <button id="enviar">Enviar</button>
+
+        <div class="col-md-6 mb-3">
+          <label for="Busqueda">Búsqueda:</label>
+          <input type="text" class="form-control" id="Busqueda" name="Busqueda" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="FI">Fecha Inicial:</label>
+          <input type="date" class="form-control" id="FI" name="FI" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="FF">Fecha Final:</label>
+          <input type="date" class="form-control" id="FF" name="FF" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="RUT">RUT:</label>
+          <input type="text" class="form-control" id="RUTObtieneCostoCliente" name="RUT" required/>
+        </div>
+
+        <input type="text" id="ID_Sesion" name="ID_Sesion" hidden readonly />
+
+        <div class="col-12 text-center">
+          <button id="enviar" class="btn btn-success">Enviar</button>
+        </div>
       </div>
 
-      <h2>Respuesta del Servidor</h2>
-      <div class="output-container">
-      <table class="response-table">
-        <thead>
-          <tr>
-            <th>Oficina Origen</th>
-            <th>Guía</th>
-            <th>Tipo Guía</th>
-            <th>Tipo Envío</th>
-            <th>Fecha de Creación</th>
-            <th>Estado Guía</th>
-          </tr>
-        </thead>
-        <tbody id="tablaDatos">
-          <!-- Aquí se agregarán las filas dinámicamente -->
-        </tbody>
-      </table>
+      <h2 class="mt-4">Respuesta del Servidor</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Oficina Origen</th>
+              <th>Guía</th>
+              <th>Tipo Guía</th>
+              <th>Tipo Envío</th>
+              <th>Fecha de Creación</th>
+              <th>Estado Guía</th>
+            </tr>
+          </thead>
+          <tbody id="tablaDatos">
+            <!-- Aquí se agregarán las filas dinámicamente -->
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

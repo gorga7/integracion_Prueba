@@ -1,7 +1,4 @@
-*{
-    /* border: 1px solid red; */
-}
-
+/* Estilos generales */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -9,10 +6,10 @@ body {
     background-color: #f5f5f5;
 }
 
+/* Contenedor principal */
 .container {
     width: 90%;
-    /* max-width: 1200px;
-    min-width: 300px; Ajusta según sea necesario */
+    max-width: 1200px; /* Ajustado para pantallas más grandes */
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -24,33 +21,37 @@ body {
     flex-direction: column;
 }
 
-
+/* Logo */
 .logo {
     width: 150px;
     height: auto;
     margin-bottom: 20px;
 }
 
+/* Títulos */
 h1 {
     color: #333;
     margin-bottom: 20px;
 }
 
-.container-form{
-    width: 60%;
+/* Contenedor del formulario */
+.container-form {
+    width: 100%;
+    max-width: 800px; /* Limitar ancho para pantallas grandes */
+    margin: 0 auto;
 }
 
+/* Sección del formulario */
 .form-section {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: auto;
     margin-bottom: 20px;
-    width: 100%;
 }
 
+/* Títulos de sección */
 .section-title {
     background-color: #f0f8ff;
     padding: 10px;
@@ -59,13 +60,35 @@ h1 {
     font-weight: bold;
 }
 
+/* Contenido de sección */
 .section-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-    margin-bottom: 10px;
 }
 
+/* Estilos para el select */
+.section-content select,
+.inputs-container select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff; /* Fondo blanco para el select */
+    appearance: none; /* Quitar la apariencia predeterminada del select en algunos navegadores */
+}
+
+.section-content select:focus,
+.inputs-container select:focus {
+    border-color: #095c22ce;
+    box-shadow: 0 0 5px rgba(42, 216, 51, 0.5);
+    outline: none;
+}
+
+/* Etiquetas y campos de entrada */
 .section-content label {
     margin-bottom: 5px;
     display: block;
@@ -82,6 +105,7 @@ h1 {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Estilos de enfoque para campos de entrada */
 .section-content input:focus,
 .section-content select:focus {
     border-color: #095c22ce;
@@ -89,77 +113,17 @@ h1 {
     outline: none;
 }
 
+/* Contenedor de inputs adicionales */
 .inputs-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
-    margin-bottom: 20px;
     padding: 0 10px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select.form-select {
-    width: 100%;
+/* Estilo para el botón de agregar paquete */
+#agregarPaquete {
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus,
-select.form-select:focus {
-    border-color: #095c22ce;
-    box-shadow: 0 0 5px rgba(42, 216, 51, 0.5);
-    outline: none;
-}
-
-#divNombre {
-    font-size: 14px;
-    color: #fff;
-    padding: 0.5%;
-    border-radius: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-#divNombre:hover {
-    background-color: #0056b3;
-}
-
-#btncerrarSesion {
-    padding: 10px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #50c569;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#btncerrarSesion:hover {
-    background-color: #095c22ce;
-}
-
-.buttons-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.buttons-container button {
-    width: calc(100% - 20px);
-    max-width: 200px;
-    margin: 0 5px;
-}
-
-button {
-    padding: 10px 20px;
     font-size: 16px;
     color: #fff;
     background-color: #489d5a;
@@ -169,10 +133,57 @@ button {
     transition: background-color 0.3s ease;
 }
 
+/* Cambiar color al pasar el ratón sobre el botón */
+#agregarPaquete:hover {
+    background-color: #1fc746;
+}
+
+/* Contenedor de paquetes */
+#paquetesContainer {
+    margin-top: 10px;
+}
+
+/* Botones */
+button,
+#btnObtenerPegote,
+#btncerrarSesion {
+    width: 100%;
+    max-width: 200px; /* Ajustado para mayor compatibilidad */
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px 0; /* Añadido margen para separación */
+}
+
+button {
+    background-color: #489d5a;
+}
+
 button:hover {
     background-color: #1fc746;
 }
 
+#btnObtenerPegote {
+    background-color: #28a745;
+}
+
+#btnObtenerPegote:hover {
+    background-color: #218838;
+}
+
+#btncerrarSesion {
+    background-color: #50c569;
+}
+
+#btncerrarSesion:hover {
+    background-color: #095c22;
+}
+
+/* Mensaje de respuesta */
 #Respuesta {
     width: 100%;
     max-width: 600px;
@@ -185,108 +196,16 @@ button:hover {
     line-height: 1.5;
 }
 
-#K_Oficina,
-#K_Guia,
-#CodigoPedidoPegote {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 15px;
-}
-
-#K_Oficina:focus,
-#K_Guia:focus,
-#CodigoPedidoPegote:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-}
-
-#btnObtenerPegote {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #28a745;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-    width: 100%;
-}
-
-#btnObtenerPegote:hover {
-    background-color: #218838;
-}
-
-.table-wrapper {
-    overflow-x: auto;
-}
-
-#output-container {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#output-container {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.response-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.response-table th,
-.response-table td {
-    border: 1px solid #dddddd;
-    padding: 12px;
-    text-align: left;
-}
-
-.response-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.response-table tr:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.response-table tr:hover {
-    background-color: #e2e2e2;
-}
-
-@media (max-width: 768px) {
-    .response-table {
-        font-size: 14px;
-    }
-}
-
-#historial-container {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
+/* Estilos de tablas */
+.response-table,
 .historial-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
+.response-table th,
+.response-table td,
 .historial-table th,
 .historial-table td {
     border: 1px solid #dddddd;
@@ -294,81 +213,36 @@ button:hover {
     text-align: left;
 }
 
+.response-table th,
 .historial-table th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
 
+.response-table tr:nth-child(odd),
 .historial-table tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
+.response-table tr:hover,
 .historial-table tr:hover {
     background-color: #e2e2e2;
 }
 
+/* Ajustes de responsividad */
 @media (max-width: 768px) {
-    .historial-table {
-        font-size: 14px;
+    .section-content {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
     }
-}
 
-#estado-guia {
-    background-color: #f0f0f0;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-}
+    .inputs-container {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
 
-#estado-guia:hover {
-    background-color: #ca9191;
-}
+    button {
+        max-width: 100%;
+    }
 
-#fecha-hora,
-#fecha-horaEnvio,
-#fecha-horaInicio,
-#fecha-horaRastreo,
-#fecha-horaAjustes {
-    font-size: 14px;
-    color: #947373;
-    padding: 10px 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-}
-
-#settings-menu {
-    width: 100%;
-    max-width: 200px;
-    float: left;
-}
-
-#settings-menu ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#settings-menu ul li {
-    padding: 10px;
-    background-color: #f4f4f4;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-}
-
-#settings-menu ul li:hover {
-    background-color: #ddd;
-}
-
-#settings-content {
-    margin-left: 220px;
-    padding: 20px;
-}
-
-@media (max-width: 768px) {
     #settings-menu {
         width: 100%;
         float: none;
@@ -377,27 +251,77 @@ button:hover {
     #settings-content {
         margin-left: 0;
     }
-
-
-    form {
-        width: 100%;
-        max-width: 800px; /* O el valor que prefieras */
-        margin: 0 auto;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    button,
-    #btnObtenerPegote,
-    #btncerrarSesion {
-        width: 100%;
-        max-width: none;
-    }
 }
 
-
+/* Botón movible */
 #movable-button {
     position: absolute;
     padding: 15px 30px;
     font-size: 18px;
+}
+/* Estilos generales del header */
+header {
+    background-color: #343a40;
+}
+
+/* Fondo del navbar */
+.navbar {
+    background: linear-gradient(to right, #343a40, #495057);
+    border-bottom: 1px solid #6c757d;
+}
+
+/* Color del texto del navbar */
+.navbar-nav .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #e9ecef;
+}
+
+/* Fondo y color del botón de cerrar sesión */
+#btncerrarSesion {
+    background-color: #17a2b8;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#btncerrarSesion:hover {
+    background-color: #138496;
+    color: #ffffff;
+}
+
+/* Estilo para el contenedor de fecha y hora */
+#fecha-horaEnvio, #fecha-horaAjustes, #fecha-horaRastreo, #fecha-horaInicio {
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* Estilo del contenedor de bienvenida */
+.welcome-container {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-container:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Texto de bienvenida */
+.welcome-text {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0;
 }

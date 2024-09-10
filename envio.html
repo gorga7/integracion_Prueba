@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script src="script.js"></script>
-    <script src="wsLogOut.js"></script>
-    <script src="wsInGuia_Levante.js"></script>
-    <script src="wsGetPegote.js"></script>
-    <script src="wsOficina.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="wsLogOut.js" defer></script>
+    <script src="wsInGuia_Levante.js" defer></script>
+    <script src="wsGetPegote.js" defer></script>
+    <script src="wsOficina.js" defer></script>
 
     <link
       rel="stylesheet"
@@ -17,59 +17,54 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
 </head>
 
 <body>
-
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="inicio.html">Inicio</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="envio.html">Enviar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="rastreo.html">Rastrear</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ajustes.html">Ajustes</a>
-                </li>
-            </ul>
-            <div class="ml-auto navbar-text">
-                <div id="fecha-horaEnvio"></div>
-            </div>  
-            <div id="divNombre">
-                <p class="m-0" id="pNombre"></p>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
+            <a class="navbar-brand" href="inicio.html">Inicio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="envio.html">Enviar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rastreo.html">Rastrear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ajustes.html">Ajustes</a>
+                    </li>
+                </ul>
+                <div class="ml-auto d-flex align-items-center">
+                    <div id="fecha-horaEnvio" class="mr-3 text-light font-italic">Fecha y Hora</div>
+                    <div id="divNombre" class="mr-3 d-flex align-items-center">
+                        <div class="welcome-container">
+                            <p class="m-0 welcome-text">Bienvenido, Usuario</p>
+                        </div>
+                    </div>
+                    <button id="btncerrarSesion" class="btn btn-light">Cerrar Sesión</button>
+                </div>
             </div>
-            <button id="btncerrarSesion" class="btn btn-success">Cerrar Sesión</button>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
-<div class="container">
+<div class="container mt-4">
     <img
       src="https://www.dac.com.uy/imagenes/logo-tr-color.png"
       alt="DAC Logo"
-      class="logo"
+      class="logo img-fluid"
     />
     <h1>Crear envío</h1>
     <div class="container-form">
       <form id="jsonForm">
-      
           <!-- Selección de Tipo de Guía -->
           <div class="form-section">
               <div class="form-group">
                   <label for="K_Tipo_Guia">Tipo de guía:</label>
-                  <select class="form-select" name="K_Tipo_Guia" id="K_Tipo_Guia" autocomplete="off">
+                  <select class="form-control" name="K_Tipo_Guia" id="K_Tipo_Guia" autocomplete="off">
                       <option value="" disabled selected>¿Quién paga?</option>
                       <option value="2">Cuenta Corriente</option>
                       <option value="4">Flete Destino</option>
@@ -78,7 +73,7 @@
               <!-- Selección de Tipo de Envío -->
               <div class="form-group">
                   <label for="K_Tipo_Envio">Tipo de envío:</label>
-                  <select class="form-select" name="K_Tipo_Envio" id="K_Tipo_Envio" autocomplete="off">
+                  <select class="form-control" name="K_Tipo_Envio" id="K_Tipo_Envio" autocomplete="off">
                       <option value="" disabled selected>¿Qué vas a enviar?</option>
                       <option value="1">Paquete</option>
                       <option value="2">Carta</option>
@@ -89,7 +84,7 @@
               <!-- Selección de Entrega -->
               <div class="form-group">
                   <label for="Entrega">Entrega:</label>
-                  <select class="form-select" name="Entrega" id="Entrega" autocomplete="off">
+                  <select class="form-control" name="Entrega" id="Entrega" autocomplete="off">
                       <option value="" disabled selected>¿Agencia o Domicilio?</option>
                       <option value="1">Agencia</option>
                       <option value="2">Domicilio</option>
@@ -102,11 +97,11 @@
               <div class="section-content">
                   <div class="form-group">
                       <label for="D_Cliente_Remitente">Remitente:</label>
-                      <input type="text" value="Prueba remitente" id="D_Cliente_Remitente" required />
+                      <input type="text" class="form-control" value="Prueba remitente" id="D_Cliente_Remitente" required />
                   </div>
                   <div class="form-group">
                       <label for="Telefono_Remitente">Teléfono del remitente:</label>
-                      <input type="text" value="092737362" id="Telefono_Remitente" required />
+                      <input type="text" class="form-control" value="092737362" id="Telefono_Remitente" required />
                   </div>
               </div>
           </div>
@@ -116,19 +111,19 @@
               <div class="section-content">
                   <div class="form-group">
                       <label for="Cliente_Destinatario">Destinatario:</label>
-                      <input type="text" value="Prueba Cliente_Destinatario" id="Cliente_Destinatario" required />
+                      <input type="text" class="form-control" value="Prueba Cliente_Destinatario" id="Cliente_Destinatario" required />
                   </div>
                   <div class="form-group">
                       <label for="Telefono">Teléfono destinatario:</label>
-                      <input type="text" value="092737362" id="Telefono" required />
+                      <input type="text" class="form-control" value="092737362" id="Telefono" required />
                   </div>
                   <div class="form-group">
                       <label for="Direccion_Destinatario">Dirección del destinatario:</label>
-                      <input type="text" placeholder="ej: 18 de julio 1234, Montevideo, Montevideo" id="Direccion_Destinatario" required />
+                      <input type="text" class="form-control" placeholder="ej: 18 de julio 1234, Montevideo, Montevideo" id="Direccion_Destinatario" required />
                   </div>
                   <div class="form-group">
                       <label for="Observaciones">Observaciones:</label>
-                      <input type="text" placeholder="Opcional" id="Observaciones" />
+                      <input type="text" class="form-control" placeholder="Opcional" id="Observaciones" />
                   </div>
               </div>
           </div>
@@ -138,25 +133,25 @@
               <div class="section-content">
                   <div class="form-group">
                       <label for="RUT">RUT:</label>
-                      <input type="text" placeholder="Opcional" id="RUT" />
+                      <input type="text" class="form-control" placeholder="Opcional" id="RUT" />
                   </div>
                   <!-- Selección de Agencia -->
                   <div class="form-group">
                       <label for="sucursales">Agencia:</label>
-                      <select class="form-select" id="sucursales" aria-label="Seleccione Sucursal">
+                      <select id="sucursales" aria-label="Seleccione Sucursal">
                           <option disabled selected>Seleccione Sucursal</option>
                       </select>
                   </div>
                   <!-- Cantidad de Paquetes -->
                   <div class="form-group">
                       <label for="Paquetes_Ampara">Cantidad total de paquetes:</label>
-                      <input type="text" placeholder="Indicá la cantidad TOTAL de etiquetas que necesitas" id="Paquetes_Ampara" />
+                      <input type="text" class="form-control" placeholder="Indicá la cantidad TOTAL de etiquetas que necesitas" id="Paquetes_Ampara" />
                   </div>
                   <!-- Detalle de Paquetes -->
                   <div class="form-group">
                       <label for="Detalle_Paquetes">Detalle de Paquetes:</label>
                       <div class="inputs-container">
-                          <button type="button" id="agregarPaquete">Agregar Paquete</button>
+                          <button type="button" class="btn btn-success" id="agregarPaquete">Agregar Paquete</button>
                       </div>
                       <div id="paquetesContainer"></div>
                   </div>
@@ -171,13 +166,13 @@
               <input type="text" id="Serv_Cita" />
               <input type="text" id="Latitud_Destino" />
               <input type="text" id="Longitud_Destino" />
-              <input type="date" id="F_Recoleccion" class="form-input" />
-              <input type="number" id="K_Domicilio_Recoleccion" />
-              <input type="number" value="5" id="K_Cliente_Destinatario" required />
+              <input type="date" class="form-control" id="F_Recoleccion" />
+              <input type="number" class="form-control" id="K_Domicilio_Recoleccion" />
+              <input type="number" class="form-control" value="5" id="K_Cliente_Destinatario" required />
           </div>
           <!-- Botón para Crear Envío -->
           <div class="form-group">
-              <button id="btnCrearEnvio">Crear envío</button>
+              <button type="submit" class="btn btn-success" id="btnCrearEnvio">Crear envío</button>
           </div>
       </form>
     </div>
@@ -185,12 +180,13 @@
     <p id="Respuesta"></p>
 </div>
 
-<div class="container">
+<div class="container mt-4">
     <h1>Imprime Etiqueta</h1>
     <div class="inputs-container">
         <label for="K_Oficina">Oficina de Origen</label>
         <input
             type="text"
+            class="form-control"
             id="K_Oficina"
             name="K_Oficina"
             placeholder="ej: 870"
@@ -199,6 +195,7 @@
         <label for="K_Guia">Número de guía</label>
         <input
             type="text"
+            class="form-control"
             id="K_Guia"
             name="K_Guia"
             placeholder="ej: 2603001"
@@ -206,6 +203,7 @@
 
         <input
             type="text"
+            class="form-control"
             id="CodigoPedidoPegote"
             name="CodigoPedido"
             placeholder="Número de referencia externo"
@@ -214,14 +212,14 @@
 
         <input
             type="text"
+            class="form-control"
             id="ID_Sesion"
             name="ID_Sesion"
             style="display: none"
             placeholder="ID de Sesión"
         />
-        <button id="btnObtenerPegote">Obtener Etiqueta</button>
+        <button id="btnObtenerPegote" class="btn btn-success">Obtener Etiqueta</button>
     </div>
-   
 </div>
 
 <hr />

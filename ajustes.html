@@ -18,10 +18,8 @@
   <body>
     <button id="movable-button" type="button" class="btn btn-danger">Próximamente</button>
 
-
-    
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
           <a class="navbar-brand" href="inicio.html">Inicio</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -38,12 +36,15 @@
                       <a class="nav-link" href="ajustes.html">Ajustes</a>
                   </li>
               </ul>
-              <div class="ml-auto navbar-text">
-                  <div id="fecha-horaAjustes"></div>
-                  </div>  
-                  <div id="divNombre"><p class="m-0" id="pNombre"></p>
+              <div class="ml-auto d-flex align-items-center">
+                <div id="fecha-horaAjustes" class="mr-3 text-light font-italic">Fecha y Hora</div>
+                <div id="divNombre" class="mr-3 d-flex align-items-center">
+                    <div class="welcome-container">
+                        <p class="m-0 welcome-text">Bienvenido, Usuario</p>
+                    </div>
+                </div>
+                  <button id="btncerrarSesion" class="btn btn-light">Cerrar Sesión</button>
               </div>
-              <button id="btncerrarSesion" class="btn btn-success">Cerrar Sesión</button>
           </div>
       </nav>
   </header>
