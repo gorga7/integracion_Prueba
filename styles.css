@@ -253,11 +253,30 @@ button:hover {
     }
 }
 
-/* Botón movible */
-#movable-button {
+ /* Estilos personalizados */
+ #movable-button {
     position: absolute;
-    padding: 15px 30px;
-    font-size: 18px;
+    width: auto; /* Tamaño automático en función del contenido */
+    height: auto; /* Altura automática en función del contenido */
+    max-width: 150px; /* Tamaño máximo del botón */
+    max-height: 100px; /* Altura máxima del botón */
+    font-size: 1rem; /* Tamaño de fuente base */
+    display: flex; /* Usa flexbox para centrar el texto */
+    align-items: center; /* Centra verticalmente el texto */
+    justify-content: center; /* Centra horizontalmente el texto */
+    padding: 10px; /* Espaciado interno */
+    white-space: nowrap; /* Evita que el texto se envuelva */
+    overflow: hidden; /* Oculta el texto que se desborda */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto se desborda */
+}
+
+@media (max-width: 767px) {
+    #movable-button {
+        font-size: 0.8rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+    .welcome-text {
+        font-size: 0.9rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
 }
 /* Estilos generales del header */
 header {

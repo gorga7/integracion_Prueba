@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const button = document.getElementById('movable-button');
     const speed = 3; // Ajusta la velocidad de movimiento
-    const amplitude = 200; // Amplitud del movimiento en píxeles
+    const amplitude = 20; // Amplitud del movimiento en porcentaje de viewport
     const frequency = 0.02; // Frecuencia del movimiento
 
     let angle = 0; // Ángulo para la animación sinusoidal
@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         angle += speed;
 
-        const x = (viewportWidth - buttonWidth) / 2 + amplitude * Math.sin(frequency * angle);
-        const y = (viewportHeight - buttonHeight) / 2 + amplitude * Math.cos(frequency * angle);
+        const x = (viewportWidth - buttonWidth) / 2 + (viewportWidth * amplitude / 100) * Math.sin(frequency * angle);
+        const y = (viewportHeight - buttonHeight) / 2 + (viewportHeight * amplitude / 100) * Math.cos(frequency * angle);
 
-        button.style.left = `${x}px`;
-        button.style.top = `${y}px`;
+        button.style.left = `${Math.min(Math.max(0, x), viewportWidth - buttonWidth)}px`;
+        button.style.top = `${Math.min(Math.max(0, y), viewportHeight - buttonHeight)}px`;
 
         // Continúa la animación
         requestAnimationFrame(moveButton);
