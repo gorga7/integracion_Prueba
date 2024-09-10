@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let divNombre = document.getElementById("divNombre");
   let pNombre = document.getElementById("pNombre");
   pNombre.innerHTML = `Bienvenido, ${localStorage.getItem("Nombre")}`;
-  divNombre.appendChild(pNombre);
+ 
 
 
 

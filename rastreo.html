@@ -36,7 +36,7 @@
                   <div id="fecha-horaRastreo" class="mr-3 text-light font-italic">Fecha y Hora</div>
                   <div id="divNombre" class="mr-3 d-flex align-items-center">
                       <div class="welcome-container">
-                          <p class="m-0 welcome-text">Bienvenido, Usuario</p>
+                          <p class="m-0 welcome-text" id="pNombre"></p>
                       </div>
                   </div>
                   <button id="btncerrarSesion" class="btn btn-light">Cerrar Sesión</button>
@@ -143,7 +143,7 @@
 
         <div class="col-md-6 mb-3">
           <label for="RUT">RUT:</label>
-          <input type="text" class="form-control" id="RUTObtieneCostoCliente" name="RUT" required/>
+          <input value="46130338" type="text" class="form-control" id="RUTObtieneCostoCliente" name="RUT" required/>
         </div>
 
         <input type="text" id="ID_Sesion" name="ID_Sesion" hidden readonly />
