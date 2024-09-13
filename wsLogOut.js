@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (IDSession) {
       fetch(
-        "https://altis-ws.grupoagencia.com:444/JAgencia/JAgencia.asmx/wsLogOut",
+        "https://altis-ws.grupoagencia.com:444/JAgenciaQA/JAgencia.asmx/wsLogOut",
         {
           method: "POST",
           body: JSON.stringify({ ID_Sesion: IDSession }), // Asegúrate de que el nombre del parámetro sea correcto

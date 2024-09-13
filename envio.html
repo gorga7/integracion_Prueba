@@ -10,6 +10,7 @@
     <script src="wsInGuia_Levante.js" defer></script>
     <script src="wsGetPegote.js" defer></script>
     <script src="wsOficina.js" defer></script>
+    <script src="wsObtieneCosto_Nuevo.js" defer></script>
 
     <link
       rel="stylesheet"
@@ -51,130 +52,134 @@
         </nav>
     </header>
 
-<div class="container mt-4">
-    <img
-      src="https://www.dac.com.uy/imagenes/logo-tr-color.png"
-      alt="DAC Logo"
-      class="logo img-fluid"
-    />
-    <h1>Crear envío</h1>
-    <div class="container-form">
-      <form id="jsonForm">
-          <!-- Selección de Tipo de Guía -->
-          <div class="form-section">
-              <div class="form-group">
-                  <label for="K_Tipo_Guia">Tipo de guía:</label>
-                  <select class="form-control" name="K_Tipo_Guia" id="K_Tipo_Guia" autocomplete="off">
-                      <option value="" disabled selected>¿Quién paga?</option>
-                      <option value="2">Cuenta Corriente</option>
-                      <option value="4">Flete Destino</option>
-                  </select>
-              </div>
-              <!-- Selección de Tipo de Envío -->
-              <div class="form-group">
-                  <label for="K_Tipo_Envio">Tipo de envío:</label>
-                  <select class="form-control" name="K_Tipo_Envio" id="K_Tipo_Envio" autocomplete="off">
-                      <option value="" disabled selected>¿Qué vas a enviar?</option>
-                      <option value="1">Paquete</option>
-                      <option value="2">Carta</option>
-                      <option value="3">Sobre</option>
-                      <option value="4">Producto</option>
-                  </select>
-              </div>
-              <!-- Selección de Entrega -->
-              <div class="form-group">
-                  <label for="Entrega">Entrega:</label>
-                  <select class="form-control" name="Entrega" id="Entrega" autocomplete="off">
-                      <option value="" disabled selected>¿Agencia o Domicilio?</option>
-                      <option value="1">Agencia</option>
-                      <option value="2">Domicilio</option>
-                  </select>
-              </div>
-          </div>
-          <!-- Datos del Remitente -->
-          <div class="form-section">
-              <div class="section-title">Datos del Remitente</div>
-              <div class="section-content">
-                  <div class="form-group">
-                      <label for="D_Cliente_Remitente">Remitente:</label>
-                      <input type="text" class="form-control" value="Prueba remitente" id="D_Cliente_Remitente" required />
-                  </div>
-                  <div class="form-group">
-                      <label for="Telefono_Remitente">Teléfono del remitente:</label>
-                      <input type="text" class="form-control" value="092737362" id="Telefono_Remitente" required />
-                  </div>
-              </div>
-          </div>
-          <!-- Datos del Destinatario -->
-          <div class="form-section">
-              <div class="section-title">Datos del Destinatario</div>
-              <div class="section-content">
-                  <div class="form-group">
-                      <label for="Cliente_Destinatario">Destinatario:</label>
-                      <input type="text" class="form-control" value="Prueba Cliente_Destinatario" id="Cliente_Destinatario" required />
-                  </div>
-                  <div class="form-group">
-                      <label for="Telefono">Teléfono destinatario:</label>
-                      <input type="text" class="form-control" value="092737362" id="Telefono" required />
-                  </div>
-                  <div class="form-group">
-                      <label for="Direccion_Destinatario">Dirección del destinatario:</label>
-                      <input type="text" class="form-control" placeholder="ej: 18 de julio 1234, Montevideo, Montevideo" id="Direccion_Destinatario" required />
-                  </div>
-                  <div class="form-group">
-                      <label for="Observaciones">Observaciones:</label>
-                      <input type="text" class="form-control" placeholder="Opcional" id="Observaciones" />
-                  </div>
-              </div>
-          </div>
-          <!-- Información Adicional -->
-          <div class="form-section">
-              <div class="section-title">Datos extra</div>
-              <div class="section-content">
-                  <div class="form-group">
-                      <label for="RUT">RUT:</label>
-                      <input type="text" class="form-control" placeholder="Opcional" id="RUT" />
-                  </div>
-                  <!-- Selección de Agencia -->
-                  <div class="form-group">
-                    <label for="sucursales">Agencia:</label>
-                    <select id="sucursales" aria-label="Seleccione Sucursal">
-                        <option disabled selected>Seleccione Sucursal</option>
-                    </select>
+    <div class="container mt-4">
+        <img
+          src="https://www.dac.com.uy/imagenes/logo-tr-color.png"
+          alt="DAC Logo"
+          class="logo img-fluid"
+        />
+        <h1>Crear envío</h1>
+        <div class="container-form">
+            <form id="jsonForm">
+                <!-- Selección de Tipo de Guía -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="K_Tipo_Guia">Tipo de guía:</label>
+                        <select class="form-control" name="K_Tipo_Guia" id="K_Tipo_Guia" autocomplete="off">
+                            <option value="" disabled selected>¿Quién paga?</option>
+                            <option value="2">Cuenta Corriente</option>
+                            <option value="4">Flete Destino</option>
+                        </select>
+                    </div>
+                    <!-- Selección de Tipo de Envío -->
+                    <div class="form-group">
+                        <label for="K_Tipo_Envio">Tipo de envío:</label>
+                        <select class="form-control" name="K_Tipo_Envio" id="K_Tipo_Envio" autocomplete="off">
+                            <option value="" disabled selected>¿Qué vas a enviar?</option>
+                            <option value="1">Paquete</option>
+                            <option value="2">Carta</option>
+                            <option value="3">Sobre</option>
+                            <option value="4">Producto</option>
+                        </select>
+                    </div>
+                    <!-- Selección de Entrega -->
+                    <div class="form-group">
+                        <label for="Entrega">Entrega:</label>
+                        <select class="form-control" name="Entrega" id="Entrega" autocomplete="off">
+                            <option value="" disabled selected>¿Agencia o Domicilio?</option>
+                            <option value="1">Agencia</option>
+                            <option value="2">Domicilio</option>
+                        </select>
+                    </div>
                 </div>
-                  <!-- Cantidad de Paquetes -->
-                  <div class="form-group">
-                      <label for="Paquetes_Ampara">Cantidad total de paquetes:</label>
-                      <input type="text" class="form-control" placeholder="Indicá la cantidad TOTAL de etiquetas que necesitas" id="Paquetes_Ampara" />
-                  </div>
-                  <!-- Detalle de Paquetes -->
-                  <div class="form-group">
-                      <label for="Detalle_Paquetes">Detalle de Paquetes:</label>
-                      <div class="inputs-container">
-                          <button type="button" class="btn btn-success" id="agregarPaquete">Agregar Paquete</button>
-                      </div>
-                      <div id="paquetesContainer"></div>
-                  </div>
-              </div>
-          </div>
-          <!-- Campos Ocultos -->
-          <div style="display: none;">
-              <input type="text" id="CostoMercaderia" />
-              <input type="text" id="Referencia_Pago" />
-              <input type="text" id="CodigoPedido" />
-              <input type="text" id="Serv_DDF" />
-              <input type="text" id="Serv_Cita" />
-              <input type="text" id="Latitud_Destino" />
-              <input type="text" id="Longitud_Destino" />
-              <input type="date" class="form-control" id="F_Recoleccion" />
-              <input type="number" class="form-control" id="K_Domicilio_Recoleccion" />
-              <input type="number" class="form-control" value="5" id="K_Cliente_Destinatario" required />
-          </div>
-          <!-- Botón para Crear Envío -->
-          <div class="form-group">
-              <button type="submit" class="btn btn-success" id="btnCrearEnvio">Crear envío</button>
-          </div>
-      </form>
+                <!-- Datos del Remitente -->
+                <div class="form-section">
+                    <div class="section-title">Datos del Remitente</div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="D_Cliente_Remitente">Remitente:</label>
+                            <input type="text" class="form-control" value="Prueba remitente" id="D_Cliente_Remitente" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Telefono_Remitente">Teléfono del remitente:</label>
+                            <input type="text" class="form-control" value="092737362" id="Telefono_Remitente" required />
+                        </div>
+                    </div>
+                </div>
+                <!-- Datos del Destinatario -->
+                <div class="form-section">
+                    <div class="section-title">Datos del Destinatario</div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="Cliente_Destinatario">Destinatario:</label>
+                            <input type="text" class="form-control" value="Prueba Cliente_Destinatario" id="Cliente_Destinatario" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Telefono">Teléfono destinatario:</label>
+                            <input type="text" class="form-control" value="092737362" id="Telefono" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Direccion_Destinatario">Dirección del destinatario:</label>
+                            <input type="text" class="form-control" placeholder="ej: 18 de julio 1234, Montevideo, Montevideo" id="Direccion_Destinatario" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="Observaciones">Observaciones:</label>
+                            <input type="text" class="form-control" placeholder="Opcional" id="Observaciones" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Información Adicional -->
+                <div class="form-section">
+                    <div class="section-title">Datos extra</div>
+                    <div class="section-content">
+                        <div class="form-group">
+                            <label for="RUT">RUT:</label>
+                            <input type="text" class="form-control" placeholder="Opcional" id="RUT" />
+                        </div>
+                        <!-- Selección de Agencia -->
+                        <div class="form-group">
+                          <label for="sucursales">Agencia:</label>
+                          <select id="sucursales" aria-label="Seleccione Sucursal">
+                              <option disabled selected>Seleccione Sucursal</option>
+                          </select>
+                        </div>
+                        <!-- Cantidad de Paquetes -->
+                        <div class="form-group">
+                            <label for="Paquetes_Ampara">Cantidad total de paquetes:</label>
+                            <input type="text" class="form-control" placeholder="Indicá la cantidad TOTAL de etiquetas que necesitas" id="Paquetes_Ampara" />
+                        </div>
+                        <!-- Detalle de Paquetes -->
+                        <div class="form-group">
+                            <label for="Detalle_Paquetes">Detalle de Paquetes:</label>
+                            <div class="inputs-container">
+                                <button type="button" class="btn btn-success" id="agregarPaquete">Agregar Paquete</button>
+                            </div>
+                            <div id="paquetesContainer"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Campos Ocultos -->
+                <div style="display: none;">
+                    <input type="text" id="CostoMercaderia" />
+                    <input type="text" id="Referencia_Pago" />
+                    <input type="text" id="CodigoPedido" />
+                    <input type="text" id="Serv_DDF" />
+                    <input type="text" id="Serv_Cita" />
+                    <input type="text" id="Latitud_Destino" />
+                    <input type="text" id="Longitud_Destino" />
+                    <input type="date" class="form-control" id="F_Recoleccion" />
+                    <input type="number" class="form-control" id="K_Domicilio_Recoleccion" />
+                    <input type="number" class="form-control" value="5" id="K_Cliente_Destinatario" required />
+                </div>
+                <!-- Botones para Envío y Cálculo de Costo -->
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" id="btnCalcularCosto">Calcular Costo</button>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" id="btnCrearEnvio">Crear envío</button>
+                </div>
+                <!-- Botón para Calcular Costo -->
+            </form>
     </div>
 
     <p id="Respuesta"></p>

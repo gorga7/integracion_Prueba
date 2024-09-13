@@ -1,36 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    document.getElementById("agregarPaquete").addEventListener("click", function () {
-        const paqueteDiv = document.createElement("div");
-        paqueteDiv.classList.add("paqueteDiv");
-
-        const tipoInput = document.createElement("input");
-        tipoInput.type = "text";
-        tipoInput.placeholder = "Tipo de paquete";
-        tipoInput.classList.add("form-control");
-
-        const cantidadInput = document.createElement("input");
-        cantidadInput.type = "number";
-        cantidadInput.placeholder = "Cantidad de etiquetas";
-        cantidadInput.classList.add("form-control");
-
-        paqueteDiv.appendChild(tipoInput);
-        paqueteDiv.appendChild(cantidadInput);
-
-        const hr = document.createElement("hr");
-        paqueteDiv.appendChild(hr);
-
-        document.getElementById("paquetesContainer").appendChild(paqueteDiv);
-    });
-
     // Obtiene los paquetes ingresados
     function getPaquetes() {
         const paquetesDivs = document.querySelectorAll(".paqueteDiv");
         let paquetes = [];
 
         paquetesDivs.forEach((div) => {
-            const tipoInput = div.querySelector(".form-control[type='text']");
-            const cantidadInput = div.querySelector(".form-control[type='number']");
+            const tipoInput = div.querySelector("input[type='text']");
+            const cantidadInput = div.querySelector("input[type='number']");
 
             const tipo = tipoInput ? tipoInput.value.trim() : "";
             const cantidad = cantidadInput ? parseInt(cantidadInput.value, 10) : 0;
@@ -46,26 +23,38 @@ document.addEventListener("DOMContentLoaded", function () {
         return paquetes;
     }
 
-    // Maneja el envío del formulario
-    document.getElementById("jsonForm").addEventListener("submit", async function (event) {
-        event.preventDefault(); // Previene el comportamiento por defecto del formulario
+    // Maneja el clic en el botón Calcular Costo
+    document.getElementById("btnCalcularCosto").addEventListener("click", async function () {
+        console.log("Botón 'Calcular Costo' clicado.");  // Asegúrate de que esto se muestra en la consola
+
+        // Verifica si los elementos existen antes de acceder a sus valores
+        const kTipoGuia = document.getElementById("K_Tipo_Guia");
+        const kTipoEnvio = document.getElementById("K_Tipo_Envio");
+        const kClienteRemitente = document.getElementById("K_Cliente_Remitente");
+        const kClienteDestinatario = document.getElementById("K_Cliente_Destinatario");
+        const direccionDestinatario = document.getElementById("Direccion_Destinatario");
+        const kOficinaDestino = document.getElementById("K_Oficina_Destino");
+        const entrega = document.getElementById("Entrega");
+        const paquetesAmpara = document.getElementById("Paquetes_Ampara");
+        const esRecoleccion = document.getElementById("esRecoleccion");
+        const usaBolsa = document.getElementById("usaBolsa");
 
         let formData = {
             "ID_Sesion": localStorage.getItem("ID_Session") || "",
-            "K_Tipo_Guia": document.getElementById("K_Tipo_Guia").value || "",
-            "K_Tipo_Envio": document.getElementById("K_Tipo_Envio").value || "",
-            "K_Cliente_Remitente": document.getElementById("K_Cliente_Remitente").value || "",
-            "K_Cliente_Destinatario": document.getElementById("K_Cliente_Destinatario").value || "",
-            "Direccion_Destinatario": document.getElementById("Direccion_Destinatario").value || "",
-            "K_Oficina_Destino": document.getElementById("K_Oficina_Destino") ? document.getElementById("K_Oficina_Destino").value : "601",
-            "Entrega": document.getElementById("Entrega").value || "",
-            "Paquetes_Ampara": document.getElementById("Paquetes_Ampara").value || 4,
+            "K_Tipo_Guia": kTipoGuia ? kTipoGuia.value : "",
+            "K_Tipo_Envio": kTipoEnvio ? kTipoEnvio.value : "",
+            "K_Cliente_Remitente": kClienteRemitente ? kClienteRemitente.value : "",
+            "K_Cliente_Destinatario": kClienteDestinatario ? kClienteDestinatario.value : "",
+            "Direccion_Destinatario": direccionDestinatario ? direccionDestinatario.value : "",
+            "K_Oficina_Destino": kOficinaDestino ? kOficinaDestino.value : "601",
+            "Entrega": entrega ? entrega.value : "",
+            "Paquetes_Ampara": paquetesAmpara ? paquetesAmpara.value : 4,
             "Detalle_Paquetes": JSON.stringify(getPaquetes()),
-            "esRecoleccion": document.getElementById("esRecoleccion").value || "0",
-            "usaBolsa": document.getElementById("usaBolsa").value || "0"
+            "esRecoleccion": esRecoleccion ? esRecoleccion.value : "0",
+            "usaBolsa": usaBolsa ? usaBolsa.value : "0"
         };
 
-        console.log("Enviando datos:", formData);
+        console.log("Datos del formulario:", formData);  // Para asegurarte de que se están capturando los datos correctos
 
         try {
             const response = await fetch("https://altis-ws.grupoagencia.com:444/JAgenciaQA/JAgencia.asmx/wsObtieneCosto_Nuevo", {
