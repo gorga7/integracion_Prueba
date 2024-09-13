@@ -47,6 +47,7 @@ body {
     0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil para darle profundidad sin sobrecargar */
   background: linear-gradient(90deg, #ffffff, #f0f0f0); /* Gradiente suave de blanco a gris claro para un efecto elegante */
   -webkit-background-clip: text; /* Aplica el gradiente solo al texto */
+  background-clip:var(#333);
   -webkit-text-fill-color: transparent; /* Hace que el texto sea transparente para mostrar el gradiente */
   padding: 0 10px; /* Relleno horizontal para crear un pequeño espaciado interno */
   border-radius: 3px; /* Bordes ligeramente redondeados para un estilo suave */
