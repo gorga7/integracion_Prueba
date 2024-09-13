@@ -314,7 +314,7 @@ header {
 }
 
 /* Estilo para el contenedor de fecha y hora */
-#fecha-horaEnvio, #fecha-horaAjustes, #fecha-horaRastreo, #fecha-horaInicio {
+#fecha-horaEnvio, #fecha-horaAjustes, #fecha-horaRastreo, #fecha-horaInicio, #fecha-horaCosto {
     font-size: 14px;
     background: rgba(255, 255, 255, 0.2);
     padding: 5px 10px;
