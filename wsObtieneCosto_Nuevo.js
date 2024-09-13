@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-
     document.getElementById("agregarPaquete").addEventListener("click", function () {
         const paqueteDiv = document.createElement("div");
         paqueteDiv.classList.add("paqueteDiv");
@@ -46,9 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return paquetes;
     }
-
-
-    
 
     // Maneja el envío del formulario
     document.getElementById("jsonForm").addEventListener("submit", async function (event) {
