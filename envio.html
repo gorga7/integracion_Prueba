@@ -1,163 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <script src="wsLogOut.js" defer></script>
-    <script src="wsInGuia_Levante.js" defer></script>
-    <script src="wsGetPegote.js" defer></script>
-    <script src="wsOficina.js" defer></script>
-    <script src="wsObtieneCosto_Nuevo.js" defer></script>
+    <title>Crear Envío - DAC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <!-- Bootstrap CSS -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <!-- Iconos de Bootstrap -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Header -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient">
-            <a class="navbar-brand" href="inicio.html">Inicio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="envio.html">Enviar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="rastreo.html">Rastrear</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ajustes.html">Ajustes</a>
-                    </li>
-                </ul>
-                <div class="ml-auto d-flex align-items-center">
-                    <div id="fecha-horaEnvio" class="mr-3 text-light font-italic">Fecha y Hora</div>
-                    <div id="divNombre" class="mr-3 d-flex align-items-center">
-                        <div class="welcome-container">
-                            <p class="m-0 welcome-text" id="pNombre"></p>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="inicio.html">
+                    <img src="https://www.dac.com.uy/imagenes/logo-tr-color.png" alt="DAC Logo" height="30">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="inicio.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="envio.html">Enviar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="rastreo.html">Rastrear</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ajustes.html">Ajustes</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <div id="fecha-horaEnvio" class="me-3 text-light font-italic">Fecha y Hora</div>
+                        <div id="divNombre" class="me-3 d-flex align-items-center">
+                            <div class="welcome-container">
+                                <p class="m-0 welcome-text" id="pNombre"></p>
+                            </div>
                         </div>
+                        <button id="btncerrarSesion" class="btn btn-light">Cerrar Sesión</button>
                     </div>
-                    <button id="btncerrarSesion" class="btn btn-light">Cerrar Sesión</button>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="container mt-4">
-        <img
-          src="https://www.dac.com.uy/imagenes/logo-tr-color.png"
-          alt="DAC Logo"
-          class="logo img-fluid"
-        />
-        <h1>Crear envío</h1>
+    <!-- Main Content -->
+    <main class="container mt-5">
+        <h1 class="text-center mb-5">Crear Envío</h1>
         <div class="container-form">
             <form id="jsonForm">
-                <!-- Selección de Tipo de Guía -->
-                <div class="form-section">
-                    <div class="form-group">
-                        <label for="K_Tipo_Guia">Tipo de guía:</label>
-                        <select class="form-control" name="K_Tipo_Guia" id="K_Tipo_Guia" autocomplete="off">
-                            <option value="" disabled selected>¿Quién paga?</option>
-                            <option value="2">Cuenta Corriente</option>
-                            <option value="4">Flete Destino</option>
-                        </select>
-                    </div>
-                    <!-- Selección de Tipo de Envío -->
-                    <div class="form-group">
-                        <label for="K_Tipo_Envio">Tipo de envío:</label>
-                        <select class="form-control" name="K_Tipo_Envio" id="K_Tipo_Envio" autocomplete="off">
-                            <option value="" disabled selected>¿Qué vas a enviar?</option>
-                            <option value="1">Paquete</option>
-                            <option value="2">Carta</option>
-                            <option value="3">Sobre</option>
-                            <option value="4">Producto</option>
-                        </select>
-                    </div>
-                    <!-- Selección de Entrega -->
-                    <div class="form-group">
-                        <label for="Entrega">Entrega:</label>
-                        <select class="form-control" name="Entrega" id="Entrega" autocomplete="off">
-                            <option value="" disabled selected>¿Agencia o Domicilio?</option>
-                            <option value="1">Agencia</option>
-                            <option value="2">Domicilio</option>
-                        </select>
+                <!-- Información General -->
+                <div class="form-section mb-4">
+                    <h4 class="mb-3">Información General</h4>
+                    <div class="row g-3">
+                        <!-- Tipo de Guía -->
+                        <div class="col-md-4">
+                            <label for="K_Tipo_Guia" class="form-label">Tipo de guía:</label>
+                            <select class="form-select" name="K_Tipo_Guia" id="K_Tipo_Guia" autocomplete="off" required>
+                                <option value="" disabled selected>¿Quién paga?</option>
+                                <option value="2">Cuenta Corriente</option>
+                                <option value="4">Flete Destino</option>
+                            </select>
+                        </div>
+                        <!-- Tipo de Envío -->
+                        <div class="col-md-4">
+                            <label for="K_Tipo_Envio" class="form-label">Tipo de envío:</label>
+                            <select class="form-select" name="K_Tipo_Envio" id="K_Tipo_Envio" autocomplete="off" required>
+                                <option value="" disabled selected>¿Qué vas a enviar?</option>
+                                <option value="1">Paquete</option>
+                                <option value="2">Carta</option>
+                                <option value="3">Sobre</option>
+                                <option value="4">Producto</option>
+                            </select>
+                        </div>
+                        <!-- Entrega -->
+                        <div class="col-md-4">
+                            <label for="Entrega" class="form-label">Entrega:</label>
+                            <select class="form-select" name="Entrega" id="Entrega" autocomplete="off" required>
+                                <option value="" disabled selected>¿Agencia o Domicilio?</option>
+                                <option value="1">Agencia</option>
+                                <option value="2">Domicilio</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
                 <!-- Datos del Remitente -->
-                <div class="form-section">
-                    <div class="section-title">Datos del Remitente</div>
-                    <div class="section-content">
-                        <div class="form-group">
-                            <label for="D_Cliente_Remitente">Remitente:</label>
+                <div class="form-section mb-4">
+                    <h4 class="mb-3">Datos del Remitente</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="D_Cliente_Remitente" class="form-label">Remitente:</label>
                             <input type="text" class="form-control" value="Prueba remitente" id="D_Cliente_Remitente" required />
                         </div>
-                        <div class="form-group">
-                            <label for="Telefono_Remitente">Teléfono del remitente:</label>
+                        <div class="col-md-6">
+                            <label for="Telefono_Remitente" class="form-label">Teléfono del remitente:</label>
                             <input type="text" class="form-control" value="092737362" id="Telefono_Remitente" required />
                         </div>
                     </div>
                 </div>
+
                 <!-- Datos del Destinatario -->
-                <div class="form-section">
-                    <div class="section-title">Datos del Destinatario</div>
-                    <div class="section-content">
-                        <div class="form-group">
-                            <label for="Cliente_Destinatario">Destinatario:</label>
+                <div class="form-section mb-4">
+                    <h4 class="mb-3">Datos del Destinatario</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="Cliente_Destinatario" class="form-label">Destinatario:</label>
                             <input type="text" class="form-control" value="Prueba Cliente_Destinatario" id="Cliente_Destinatario" required />
                         </div>
-                        <div class="form-group">
-                            <label for="Telefono">Teléfono destinatario:</label>
+                        <div class="col-md-6">
+                            <label for="Telefono" class="form-label">Teléfono destinatario:</label>
                             <input type="text" class="form-control" value="092737362" id="Telefono" required />
                         </div>
-                        <div class="form-group">
-                            <label for="Direccion_Destinatario">Dirección del destinatario:</label>
-                            <input type="text" class="form-control" placeholder="ej: 18 de julio 1234, Montevideo, Montevideo" id="Direccion_Destinatario" required />
+                        <div class="col-md-12">
+                            <label for="Direccion_Destinatario" class="form-label">Dirección del destinatario:</label>
+                            <input type="text" class="form-control" placeholder="Ej: 18 de julio 1234, Montevideo, Montevideo" id="Direccion_Destinatario" required />
                         </div>
-                        <div class="form-group">
-                            <label for="Observaciones">Observaciones:</label>
+                        <div class="col-md-12">
+                            <label for="Observaciones" class="form-label">Observaciones:</label>
                             <input type="text" class="form-control" placeholder="Opcional" id="Observaciones" />
                         </div>
                     </div>
                 </div>
-                <!-- Información Adicional -->
-                <div class="form-section">
-                    <div class="section-title">Datos extra</div>
-                    <div class="section-content">
-                        <div class="form-group">
-                            <label for="RUT">RUT:</label>
+
+                <!-- Datos Extra -->
+                <div class="form-section mb-4">
+                    <h4 class="mb-3">Datos Extra</h4>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="RUT" class="form-label">RUT:</label>
                             <input type="text" class="form-control" placeholder="Opcional" id="RUT" />
                         </div>
-                        <!-- Selección de Agencia -->
-                        <div class="form-group">
-                          <label for="sucursales">Agencia:</label>
-                          <select id="sucursales" aria-label="Seleccione Sucursal">
-                              <option disabled selected>Seleccione Sucursal</option>
-                          </select>
+                        <div class="col-md-6">
+                            <label for="sucursales" class="form-label">Agencia:</label>
+                            <select id="sucursales" class="form-select" aria-label="Seleccione Sucursal" required>
+                                <option disabled selected>Seleccione Sucursal</option>
+                            </select>
                         </div>
-                        <!-- Cantidad de Paquetes -->
-                        <div class="form-group">
-                            <label for="Paquetes_Ampara">Cantidad total de paquetes:</label>
-                            <input type="text" class="form-control" placeholder="Indicá la cantidad TOTAL de etiquetas que necesitas" id="Paquetes_Ampara" />
+                        <div class="col-md-6">
+                            <label for="Paquetes_Ampara" class="form-label">Cantidad total de paquetes:</label>
+                            <input type="text" class="form-control" placeholder="Indicá la cantidad TOTAL de etiquetas que necesitas" id="Paquetes_Ampara" required />
                         </div>
-                        <!-- Detalle de Paquetes -->
-                        <div class="form-group">
-                            <label for="Detalle_Paquetes">Detalle de Paquetes:</label>
-                            <div class="inputs-container">
-                                <button type="button" class="btn btn-success" id="agregarPaquete">Agregar Paquete</button>
-                            </div>
+                        <div class="col-md-6">
+                            <label for="Detalle_Paquetes" class="form-label">Detalle de Paquetes:</label>
+                            <button type="button" class="btn btn-success mb-3" id="agregarPaquete">
+                                <i class="bi bi-plus-circle"></i> Agregar Paquete
+                            </button>
                             <div id="paquetesContainer"></div>
                         </div>
                     </div>
                 </div>
+
                 <!-- Campos Ocultos -->
                 <div style="display: none;">
                     <input type="text" id="CostoMercaderia" />
@@ -171,67 +180,87 @@
                     <input type="number" class="form-control" id="K_Domicilio_Recoleccion" />
                     <input type="number" class="form-control" value="5" id="K_Cliente_Destinatario" required />
                 </div>
-                <!-- Botones para Envío y Cálculo de Costo -->
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary" id="btnCalcularCosto">Calcular Costo</button>
+
+                <!-- Botones -->
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4">
+                    <button type="button" class="btn btn-warning me-md-2" id="btnCalcularCosto">
+                        <i class="bi bi-calculator-fill"></i> Calcular Costo
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="btnCrearEnvio">
+                        <i class="bi bi-send-fill"></i> Crear Envío
+                    </button>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success" id="btnCrearEnvio">Crear envío</button>
-                </div>
-                <!-- Botón para Calcular Costo -->
+
+                <!-- Respuesta -->
+                <div id="Respuesta" class="alert mt-4" style="display: none;"></div>
             </form>
+        </div>
+
+<!-- Imprime Etiqueta -->
+<section class="mt-5 imprime-etiqueta container-form">
+    <div class="form-section">
+        <h4 class="mb-3">Imprime Etiqueta</h4>
+        <!-- Contenedor para mensajes -->
+        <div id="EtiquetaMessage" class="alert d-none"></div>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="K_Oficina" class="form-label">Oficina de Origen:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="K_Oficina"
+                    name="K_Oficina"
+                    placeholder="Ej: 870"
+                    required
+                />
+            </div>
+            <div class="col-md-4">
+                <label for="K_Guia" class="form-label">Número de guía:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="K_Guia"
+                    name="K_Guia"
+                    placeholder="Ej: 2603001"
+                    required
+                />
+            </div>
+            <div class="col-md-4">
+                <label for="CodigoPedidoPegote" class="form-label">Número de referencia externo:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="CodigoPedidoPegote"
+                    name="CodigoPedido"
+                    placeholder="Número de referencia externo"
+                />
+            </div>
+        </div>
+        <div class="d-grid mt-4">
+            <button id="btnObtenerPegote" class="btn btn-success">
+                <i class="bi bi-printer-fill"></i> Obtener Etiqueta
+            </button>
+        </div>
     </div>
+</section>
 
-    <p id="Respuesta"></p>
-</div>
+    </main>
 
-<div class="container mt-4">
-    <h1>Imprime Etiqueta</h1>
-    <div class="inputs-container">
-        <label for="K_Oficina">Oficina de Origen</label>
-        <input
-            type="text"
-            class="form-control"
-            id="K_Oficina"
-            name="K_Oficina"
-            placeholder="ej: 870"
-        />
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        © 2023 DAC. Todos los derechos reservados.
+    </footer>
 
-        <label for="K_Guia">Número de guía</label>
-        <input
-            type="text"
-            class="form-control"
-            id="K_Guia"
-            name="K_Guia"
-            placeholder="ej: 2603001"
-        />
-
-        <input
-            type="text"
-            class="form-control"
-            id="CodigoPedidoPegote"
-            name="CodigoPedido"
-            placeholder="Número de referencia externo"
-            style="display: none"
-        />
-
-        <input
-            type="text"
-            class="form-control"
-            id="ID_Sesion"
-            name="ID_Sesion"
-            style="display: none"
-            placeholder="ID de Sesión"
-        />
-        <button id="btnObtenerPegote" class="btn btn-success">Obtener Etiqueta</button>
-    </div>
-</div>
-
-<hr />
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script 
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+      <!-- Scripts -->
+      <script src="script.js" defer></script>
+      <script src="wsLogOut.js" defer></script>
+      <script src="wsInGuia_Levante.js" defer></script>
+      <script src="wsGetPegote.js" defer></script>
+      <script src="wsOficina.js" defer></script>
+      <script src="wsObtieneCosto_Nuevo.js" defer></script>
 </body>
 </html>

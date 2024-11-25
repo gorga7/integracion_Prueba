@@ -1,356 +1,683 @@
-/* Estilos generales */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'system-ui', sans-serif;
+    background: linear-gradient(120deg, #e8f5e9, #f1f8e9);
+    color: #333333;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
 }
-
-/* Contenedor principal */
-.container {
-    width: 90%;
-    max-width: 1200px; /* Ajustado para pantallas más grandes */
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
 /* Logo */
 .logo {
-    width: 150px;
+    width: 160px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 /* Títulos */
-h1 {
-    color: #333;
-    margin-bottom: 20px;
+h1, h2, h4 {
+    color: #333333;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: center;
 }
 
-/* Contenedor del formulario */
+/* Contenedor del Formulario */
 .container-form {
     width: 100%;
-    max-width: 800px; /* Limitar ancho para pantallas grandes */
+    max-width: 900px;
     margin: 0 auto;
 }
 
-/* Sección del formulario */
+/* Sección del Formulario */
 .form-section {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más profunda */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Títulos de sección */
-.section-title {
-    background-color: #f0f8ff;
-    padding: 10px;
+.form-section:hover {
+    transform: translateY(-5px); /* Levantar al hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Títulos de Sección */
+.form-section h4 {
+    margin-bottom: 30px;
+    color: #333333;
+    border-bottom: 3px solid #4CAF50; /* Verde */
+    padding-bottom: 15px;
+    font-size: 24px;
+}
+
+/* Etiquetas y Campos de Entrada */
+.form-label {
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.form-control, .form-select, .dynamic-input {
     border-radius: 6px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-/* Contenido de sección */
-.section-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-/* Estilos para el select */
-.section-content select,
-.inputs-container select {
-    width: 100%;
+    border: 1px solid #CED4DA;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff; /* Fondo blanco para el select */
-    appearance: none; /* Quitar la apariencia predeterminada del select en algunos navegadores */
-}
-
-.section-content select:focus,
-.inputs-container select:focus {
-    border-color: #095c22ce;
-    box-shadow: 0 0 5px rgba(42, 216, 51, 0.5);
-    outline: none;
-}
-
-/* Etiquetas y campos de entrada */
-.section-content label {
-    margin-bottom: 5px;
-    display: block;
-}
-
-.section-content input,
-.section-content select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Estilos de enfoque para campos de entrada */
-.section-content input:focus,
-.section-content select:focus {
-    border-color: #095c22ce;
-    box-shadow: 0 0 5px rgba(42, 216, 51, 0.5);
-    outline: none;
-}
-
-/* Contenedor de inputs adicionales */
-.inputs-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 0 10px;
-}
-
-/* Estilo para el botón de agregar paquete */
-#agregarPaquete {
-    padding: 12px;
+    background-color: #ffffff;
     font-size: 16px;
-    color: #fff;
-    background-color: #489d5a;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Cambiar color al pasar el ratón sobre el botón */
-#agregarPaquete:hover {
-    background-color: #1fc746;
+.form-control:focus, .form-select:focus, .dynamic-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3); /* Resplandor al enfocar */
+    outline: none;
 }
 
-/* Contenedor de paquetes */
-#paquetesContainer {
-    margin-top: 10px;
+/* Placeholder Color */
+::placeholder {
+    color: #B0BEC5;
+    opacity: 1;
 }
 
 /* Botones */
-button,
-#btnObtenerPegote,
-#btncerrarSesion {
-    width: 100%;
-    max-width: 200px; /* Ajustado para mayor compatibilidad */
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    border: none;
+.btn {
+    padding: 12px 25px;
     border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 5px 0; /* Añadido margen para separación */
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-button {
-    background-color: #489d5a;
+.btn:hover {
+    transform: translateY(-3px); /* Levantar al hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #1fc746;
+.btn-primary {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    border: none;
+    color: #ffffff;
 }
 
-#btnObtenerPegote {
-    background-color: #28a745;
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #388E3C, #43A047);
 }
 
-#btnObtenerPegote:hover {
-    background-color: #218838;
+.btn-success {
+    background-color: #66BB6A; /* Verde claro */
+    border: none;
+    color: #ffffff;
 }
 
-#btncerrarSesion {
-    background-color: #50c569;
+.btn-success:hover {
+    background-color: #43A047; /* Verde más oscuro */
 }
 
-#btncerrarSesion:hover {
-    background-color: #095c22;
+.btn-warning {
+    background-color: #E53935; /* Rojo */
+    border: none;
+    color: #ffffff;
 }
 
-/* Mensaje de respuesta */
+.btn-warning:hover {
+    background-color: #C62828;
+}
+
+.btn-light {
+    background-color: #ECEFF1;
+    border: none;
+    color: #333;
+}
+
+.btn-light:hover {
+    background-color: #CFD8DC;
+}
+
+/* Botón Agregar Paquete */
+#agregarPaquete {
+    padding: 12px 25px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el elemento de Respuesta */
 #Respuesta {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto 0;
-    padding: 15px;
-    border-radius: 4px;
-    background-color: #eeeded;
-    color: #721c24;
-    font-size: 14px;
-    line-height: 1.5;
-    
-        font-family: Arial, sans-serif;
-        white-space: pre-wrap; /* Mantiene el formato de espacio y saltos de línea */
-        border: 1px solid #ccc;
-        margin-top: 20px;
-        max-height: 300px;
-        overflow-y: auto;
-    
+    background-color: #ffffff;
+    color: #333333;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 40px;
+    font-size: 16px;
+    line-height: 1.6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E0E0E0;
+    max-height: 500px;
+    overflow-y: auto;
+    display: none; /* Oculto por defecto */
 }
 
 
 
-/* Estilos de tablas */
-.response-table,
-.historial-table {
+/* Sección "Imprime Etiqueta" */
+.imprime-etiqueta .form-section {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Igual al resto de las secciones */
+    border-radius: 12px; /* Igual al resto de las secciones */
+    margin-bottom: 40px; /* Igual al resto */
+}
+
+.imprime-etiqueta h4 {
+    border-bottom: 3px solid #4CAF50;
+    padding-bottom: 15px;
+    font-size: 24px;
+}
+.imprime-etiqueta .form-control {
+    padding: 12px;
+    font-size: 16px; /* Consistente con otras secciones */
+    border-radius: 6px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imprime-etiqueta .btn {
+    padding: 12px 25px; /* Consistente con otros botones */
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* Estilos para los títulos dentro de #Respuesta */
+#Respuesta h2 {
+    color: #4CAF50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+/* Estilos para párrafos */
+#Respuesta p {
+    margin-bottom: 15px;
+}
+
+/* Estilos para tablas */
+#Respuesta table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.response-table th,
-.response-table td,
-.historial-table th,
-.historial-table td {
-    border: 1px solid #dddddd;
+#Respuesta th, #Respuesta td {
+    border: 1px solid #E0E0E0;
     padding: 12px;
     text-align: left;
 }
 
-.response-table th,
-.historial-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+#Respuesta th {
+    background-color: #F9FAFB;
+    font-weight: 600;
+    color: #333333;
 }
 
-.response-table tr:nth-child(odd),
-.historial-table tr:nth-child(odd) {
-    background-color: #f9f9f9;
+#Respuesta td {
+    color: #555555;
 }
 
-.response-table tr:hover,
-.historial-table tr:hover {
-    background-color: #e2e2e2;
+/* Estilos para mensajes de error */
+#Respuesta .error {
+    color: #E53935;
+    font-weight: 600;
 }
 
-/* Ajustes de responsividad */
-@media (max-width: 768px) {
-    .section-content {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-    }
-
-    .inputs-container {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-    }
-
-    button {
-        max-width: 100%;
-    }
-
-    #settings-menu {
-        width: 100%;
-        float: none;
-    }
-
-    #settings-content {
-        margin-left: 0;
-    }
+/* Estilos para enlaces (si los hay) */
+#Respuesta a {
+    color: #388E3C;
+    text-decoration: none;
+    border-bottom: 1px dotted #388E3C;
 }
 
- /* Estilos personalizados */
- #movable-button {
-    position: absolute;
-    width: auto; /* Tamaño automático en función del contenido */
-    height: auto; /* Altura automática en función del contenido */
-    max-width: 150px; /* Tamaño máximo del botón */
-    max-height: 100px; /* Altura máxima del botón */
-    font-size: 1rem; /* Tamaño de fuente base */
-    display: flex; /* Usa flexbox para centrar el texto */
-    align-items: center; /* Centra verticalmente el texto */
-    justify-content: center; /* Centra horizontalmente el texto */
-    padding: 10px; /* Espaciado interno */
-    white-space: nowrap; /* Evita que el texto se envuelva */
-    overflow: hidden; /* Oculta el texto que se desborda */
-    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto se desborda */
+#Respuesta a:hover {
+    color: #1B5E20;
+    border-bottom: 1px solid #1B5E20;
 }
 
-@media (max-width: 767px) {
-    #movable-button {
-        font-size: 0.8rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
-    }
-    .welcome-text {
-        font-size: 0.9rem; /* Ajusta el tamaño del texto en pantallas pequeñas */
-    }
-}
-/* Estilos generales del header */
-header {
-    background-color: #343a40;
+/* Estilos para bloques de código (si los hay) */
+#Respuesta pre {
+    background-color: #F1F3F5;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 20px;
 }
 
-/* Fondo del navbar */
+#Respuesta code {
+    background-color: #F1F3F5;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Navbar */
 .navbar {
-    background: linear-gradient(to right, #343a40, #495057);
-    border-bottom: 1px solid #6c757d;
+    background: linear-gradient(90deg, #388E3C 0%, #4CAF50 50%, #66BB6A 100%);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
 }
 
-/* Color del texto del navbar */
-.navbar-nav .nav-link {
-    color: #ffffff;
-    font-weight: 500;
+.navbar-brand img {
+    height: 35px;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3)); /* Efecto 3D para el logo */
 }
 
-.navbar-nav .nav-link:hover {
-    color: #e9ecef;
+.nav-link {
+  
+
+    margin-right: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
 }
 
-/* Fondo y color del botón de cerrar sesión */
+.nav-link:hover {
+    color: #C8E6C9;
+    transform: translateY(-2px); /* Efecto de levantar el link */
+}
+
+.nav-link.active {
+    font-weight: 700;
+    color: #C8E6C9;
+}
+
 #btncerrarSesion {
-    background-color: #17a2b8;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
-    font-weight: 500;
-    border-radius: 50px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
 }
 
 #btncerrarSesion:hover {
-    background-color: #138496;
-    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Efecto de hover */
 }
 
-/* Estilo para el contenedor de fecha y hora */
-#fecha-horaEnvio, #fecha-horaAjustes, #fecha-horaRastreo, #fecha-horaInicio, #fecha-horaCosto {
-    font-size: 14px;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 5px 10px;
-    border-radius: 4px;
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Estilo del contenedor de bienvenida */
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* Welcome Container */
 .welcome-container {
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 30px;
-    padding: 5px 15px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px 20px;
 }
 
-.welcome-container:hover {
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Texto de bienvenida */
 .welcome-text {
-    font-size: 14px;
     color: #ffffff;
     font-weight: 600;
+    font-size: 16px;
+}
+
+
+/* Footer */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #81C784 0%, #4CAF50 50%, #388E3C 100%);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    padding: 20px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+footer p {
     margin: 0;
+    font-size: 14px;
+}
+
+/* Tarjeta de Imprimir Etiqueta */
+.card {
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    padding: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Levantar al hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+}
+
+.card h2 {
+    margin-bottom: 30px;
+    color: #333333;
+    border-bottom: 3px solid #4CAF50; /* Verde */
+    padding-bottom: 15px;
+    font-size: 24px;
+}
+
+.card .form-label {
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.card .form-control {
+    margin-bottom: 15px;
+}
+
+.card .row {
+    margin-bottom: 20px;
+}
+
+/* Botón en la sección "Imprime Etiqueta" */
+#btnObtenerPegote {
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+
+#btnObtenerPegote:hover {
+    background-color: #43A047; /* Verde más oscuro */
+}
+
+/* Estilos para Inputs Dinámicos */
+.dynamic-input-container {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.dynamic-input-container label {
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.dynamic-input {
+    border-radius: 6px;
+    border: 1px solid #CED4DA;
+    padding: 12px;
+    background-color: #ffffff;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+.dynamic-input:focus {
+    border-color: #4CAF50; /* Verde */
+    outline: none;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Botón para eliminar paquete */
+.remove-package-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    color: #E53935;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.remove-package-btn:hover {
+    color: #C62828;
+}
+
+/* Ajustes para Dispositivos Móviles */
+@media (max-width: 576px) {
+    .navbar-brand img {
+        height: 28px;
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+
+    .nav-link {
+        margin-right: 0;
+        font-size: 18px;
+        padding: 10px 0;
+    }
+
+    #btncerrarSesion {
+        margin-top: 10px;
+    }
+
+    #btnObtenerPegote {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Estilos para Tablas */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #333333;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    vertical-align: middle;
+    border-top: 1px solid #E0E0E0;
+}
+
+.table thead th {
+    background-color: #F9FAFB;
+    border-bottom: 2px solid #CED4DA;
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: #F1F3F5;
+}
+
+/* Estilos para Inputs y Selects en Hover */
+.form-control:hover, .form-select:hover, .dynamic-input:hover {
+    border-color: #4CAF50;
+}
+
+/* Estilos para Campos Requeridos */
+input[required], select[required], textarea[required] {
+    border-left: 4px solid #E53935;
+}
+
+/* Estilos de Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ECEFF1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B0BEC5;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #90A4AE;
+}
+
+/* Efectos de Transición Suaves */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilos de Otras Páginas (No Modificados) */
+/* ... (Mantén los estilos de otras páginas aquí) ... */
+
+/* === Agregados para los Inputs Dinámicos === */
+
+/* Estilos para el contenedor de cada paquete */
+.paqueteDiv {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #CED4DA;
+    border-radius: 12px;
+    position: relative;
+}
+
+/* Estilos para los campos de "Tipo de paquete" y "Cantidad de etiquetas" */
+.tipoPaquete, .cantidadPaquete {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #CED4DA;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tipoPaquete:focus, .cantidadPaquete:focus {
+    border-color: #4CAF50; /* Verde */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+/* Placeholder Color */
+.tipoPaquete::placeholder, .cantidadPaquete::placeholder {
+    color: #B0BEC5;
+    opacity: 1;
+}
+
+/* Botón para eliminar paquete */
+.paqueteDiv .remove-package-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #E53935;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.paqueteDiv .remove-package-btn:hover {
+    color: #C62828;
+}
+
+/* Estilos para el separador hr */
+.paqueteDiv hr {
+    margin-top: 20px;
+    border: none;
+    border-top: 1px solid #E0E0E0;
+}
+
+/* Asegurar que el contenedor principal mantiene los estilos */
+#paquetesContainer {
+    margin-top: 20px;
+}
+
+
+
+/* Tablas Mejoradas */
+.table {
+    border-collapse: separate; /* Espaciado entre celdas */
+    border-spacing: 0; /* Eliminar separación externa */
+    width: 100%;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Bordes redondeados */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Profundidad */
+}
+
+.table thead th {
+    background: linear-gradient(90deg, #4CAF50, #66BB6A);
+    color: #ffffff;
+    padding: 20px;
+    text-transform: uppercase; /* Encabezados resaltados */
+    font-weight: bold;
+    border-bottom: 3px solid #388E3C; /* Línea decorativa */
+}
+
+.table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #E0E0E0;
+    background-color: #F9FAFB; /* Fondo claro */
+    color: #555555;
+}
+
+.table tbody tr:hover {
+    background-color: #E8F5E9; /* Resaltar al hover */
+    transform: scale(1.01); /* Efecto de agrandamiento */
+    transition: all 0.3s ease;
+}
+
+/* Mejoras en Respuesta del Servidor */
+.table-responsive {
+    margin-top: 20px;
+}
+
+.table-responsive .table-bordered {
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive .table-bordered thead th {
+    text-align: center;
+    font-size: 16px;
+}
+
+.table-responsive tbody tr:hover td {
+    background: #E8F5E9; /* Fondo destacado */
+    font-weight: bold; /* Resaltar texto */
+}
+
+/* Botones en Tablas */
+.table .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.table .btn:hover {
+    transform: translateY(-2px); /* Levantar */
+    background-color: #388E3C;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
