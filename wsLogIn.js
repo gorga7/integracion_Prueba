@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
 
       const url =
-          "https://altis-ws.grupoagencia.com:444/JAgenciaQA/JAgencia.asmx/wsLogin";
+          "https://altis-ws.grupoagencia.com:444/JAgencia/JAgencia.asmx/wsLogin";
       const data = {
           Login: login,
           Contrasenia: Contrasenia,
