@@ -2,18 +2,47 @@ document.addEventListener("DOMContentLoaded", function () {
     function getPaquetes() {
         const paquetesDivs = document.querySelectorAll(".paqueteDiv");
         let paquetes = [];
+    
         paquetesDivs.forEach((div) => {
-            const tipoInput = div.querySelector("input[type='text']");
+            // Buscar el elemento de tipo (puede ser select o input)
+            const tipoSelect = div.querySelector("select");
+            const tipoInputText = div.querySelector("input[type='text']");
+            const tipoInputNumber = div.querySelector("input[type='number']:not([readonly])"); // Excluir inputs readonly
+    
+            let tipo = "";
+    
+            if (tipoSelect) {
+                tipo = tipoSelect.value.trim();
+            } else if (tipoInputText) {
+                tipo = tipoInputText.value.trim();
+            } else if (tipoInputNumber) {
+                tipo = tipoInputNumber.value.trim();
+            } else {
+                // Manejar inputs readonly (para K_Tipo_Envio == 2 o 3)
+                const tipoInputReadOnly = div.querySelector("input[type='number'][readonly]");
+                if (tipoInputReadOnly) {
+                    tipo = tipoInputReadOnly.value.trim();
+                }
+            }
+    
             const cantidadInput = div.querySelector("input[type='number']");
-            const tipo = tipoInput ? tipoInput.value.trim() : "";
             const cantidad = cantidadInput ? parseInt(cantidadInput.value, 10) : 0;
-
+    
+            // Asegurarse de que 'tipo' y 'cantidad' sean válidos
             if (tipo && !isNaN(cantidad) && cantidad > 0) {
-                paquetes.push({ Tipo: tipo, Cantidad: cantidad });
+                // Convertir 'tipo' a número si es posible
+                const tipoNumero = parseFloat(tipo);
+                if (!isNaN(tipoNumero)) {
+                    paquetes.push({ Tipo: tipoNumero, Cantidad: cantidad });
+                } else {
+                    paquetes.push({ Tipo: tipo, Cantidad: cantidad });
+                }
             }
         });
+    
         return paquetes;
     }
+    
 
     function renderResponse(data) {
         // Crear un formato profesional para los datos

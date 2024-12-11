@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Datos a enviar:", formData); // Agregar un console.log para ver los datos antes de enviarlos
 
             fetch(
-                "https://altis-ws.grupoagencia.com:444/JAgencia/JAgencia.asmx/wsObtieneGuiasCliente",
+                "https://altis-ws.grupoagencia.com:444/JAgenciaQA/JAgencia.asmx/wsObtieneGuiasCliente",
                 {
                     method: "POST",
                     body: JSON.stringify(formData),

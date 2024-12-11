@@ -1,6 +1,8 @@
+// wsInGuia_Levante.js
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Actualizar fecha y hora
+    // Función para actualizar fecha y hora
     function actualizarFechaHora() {
         const fechaHoraActual = new Date();
         const fechaHoraString = fechaHoraActual.toLocaleString();
@@ -13,6 +15,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let btnCrearEnvio = document.getElementById("btnCrearEnvio");
     let Respuesta = document.getElementById("Respuesta");
+    const agregarPaqueteBtn = document.getElementById("agregarPaquete");
+    const tipoEnvioSelect = document.querySelector('select[name="K_Tipo_Envio"]');
+
+    // Verificar si cargarArticulosDesdeWSArticulo está definida
+    if (typeof window.cargarArticulosDesdeWSArticulo !== 'function') {
+        console.error('La función cargarArticulosDesdeWSArticulo no está definida en el objeto window.');
+    } else {
+        console.log('La función cargarArticulosDesdeWSArticulo está correctamente definida.');
+    }
+
+    // Habilitar o deshabilitar el botón "Agregar Paquete" basado en la selección de K_Tipo_Envio
+    tipoEnvioSelect.addEventListener('change', function () {
+        if (this.value) {
+            agregarPaqueteBtn.disabled = false;
+        } else {
+            agregarPaqueteBtn.disabled = true;
+        }
+
+        // Limpiar mensajes anteriores al cambiar la selección
+        Respuesta.innerHTML = "";
+        Respuesta.style.display = 'none';
+    });
 
     btnCrearEnvio.addEventListener("click", async function (event) {
         event.preventDefault();
@@ -32,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Obtener valores del formulario
             const K_Tipo_Guia = document.querySelector('select[name="K_Tipo_Guia"]').value;
-            const K_Tipo_Envio = document.querySelector('select[name="K_Tipo_Envio"]').value;
+            const K_Tipo_Envio = tipoEnvioSelect.value;
             const F_Recoleccion = document.getElementById("F_Recoleccion").value;
             const K_Domicilio_Recoleccion = document.getElementById("K_Domicilio_Recoleccion").value.trim();
             const D_Cliente_Remitente = document.getElementById("D_Cliente_Remitente").value;
@@ -184,7 +208,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    document.getElementById("agregarPaquete").addEventListener("click", function () {
+    document.getElementById("agregarPaquete").addEventListener("click", async function () {
+        // Obtener el valor actual de K_Tipo_Envio
+        const K_Tipo_Envio = tipoEnvioSelect.value;
+        console.log("Al agregar paquete, K_Tipo_Envio es:", K_Tipo_Envio);
+
+        // **Verificación Adicional: Asegurarse de que se ha seleccionado un Tipo de Envío**
+        if (!K_Tipo_Envio) {
+            console.error("Debe seleccionar un Tipo de Envío antes de agregar paquetes.");
+            Respuesta.innerHTML = `
+                <div class="alert alert-warning">
+                    <strong>Atención:</strong> Debe seleccionar un Tipo de Envío antes de agregar paquetes.
+                </div>`;
+            Respuesta.style.display = 'block';
+            return; // Salir de la función para no agregar el paquete
+        }
+
         const paqueteDiv = document.createElement("div");
         paqueteDiv.classList.add("paqueteDiv");
 
@@ -197,17 +236,110 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         paqueteDiv.appendChild(removeButton);
 
-        const tipoInput = document.createElement("input");
-        tipoInput.type = "text";
-        tipoInput.placeholder = "Tipo de paquete";
-        tipoInput.classList.add("tipoPaquete");
+        let tipoElement;
+
+        if (K_Tipo_Envio == "1") { // Usar '==' para una comparación flexible
+            // Crear el elemento <select> con las opciones especificadas
+            tipoElement = document.createElement("select");
+            // No asignar un ID para evitar duplicados
+            tipoElement.name = "paquete"; // Asignar name si es necesario
+            tipoElement.classList.add("tipoPaquete");
+
+            const opcionesPaquete = [
+                { value: "", text: "- Elige el paquete -" },
+                { value: "1", text: "2kg" },
+                { value: "2", text: "5kg" },
+                { value: "3", text: "10kg" },
+                { value: "4", text: "15kg" },
+                { value: "5", text: "20kg" },
+                { value: "6", text: "25kg" },
+                { value: "7", text: "30kg" },
+                { value: "8", text: "40kg" },
+                { value: "9", text: "50kg" }
+            ];
+
+            opcionesPaquete.forEach(opcion => {
+                const option = document.createElement("option");
+                option.value = opcion.value;
+                option.text = opcion.text;
+                tipoElement.appendChild(option);
+            });
+        } else if (K_Tipo_Envio == "2" || K_Tipo_Envio == "3") { // Nuevas condiciones para 2 y 3
+            // Crear el elemento <input> con valor predefinido 1 y no editable
+            tipoElement = document.createElement("input");
+            tipoElement.type = "number"; // Asumiendo que el valor es numérico
+            tipoElement.value = "1"; // Valor predefinido
+            tipoElement.classList.add("tipoPaquete");
+            tipoElement.readOnly = true; // Hacer que el input no sea editable
+            tipoElement.style.backgroundColor = "#e9ecef"; // Opcional: Indicar visualmente que es de solo lectura
+        } else if (K_Tipo_Envio == "4") { // Nueva condición para 4
+            // Crear el elemento <select> con opciones obtenidas desde WSArticulo
+            tipoElement = document.createElement("select");
+            tipoElement.name = "paquete"; // Asignar name si es necesario
+            tipoElement.classList.add("tipoPaquete");
+
+            // Agregar una opción de carga
+            const loadingOption = document.createElement("option");
+            loadingOption.value = "";
+            loadingOption.text = "Cargando...";
+            tipoElement.appendChild(loadingOption);
+
+            // Realizar la llamada a la función de wsArticulo.js
+            try {
+                const articulos = await window.cargarArticulosDesdeWSArticulo(); // Llamada a la función definida en wsArticulo.js
+                tipoElement.innerHTML = ""; // Eliminar la opción de carga
+
+                if (articulos.length > 0) {
+                    // Agregar una opción predeterminada
+                    const defaultOption = document.createElement("option");
+                    defaultOption.value = "";
+                    defaultOption.text = "- Selecciona un artículo -";
+                    defaultOption.disabled = true;
+                    defaultOption.selected = true;
+                    tipoElement.appendChild(defaultOption);
+
+                    // Agregar las opciones desde articulos
+                    articulos.forEach(articulo => {
+                        const option = document.createElement("option");
+                        option.value = articulo.K_Articulo; // Asegúrate de que 'K_Articulo' sea el identificador correcto
+                        option.text = articulo.D_Articulo; // Asegúrate de que 'D_Articulo' sea el nombre correcto
+                        tipoElement.appendChild(option);
+                    });
+                } else {
+                    const errorOption = document.createElement("option");
+                    errorOption.value = "";
+                    errorOption.text = "No se encontraron artículos";
+                    errorOption.disabled = true;
+                    errorOption.selected = true;
+                    tipoElement.appendChild(errorOption);
+                }
+            } catch (error) {
+                console.error("Error al obtener artículos desde WSArticulo:", error);
+                tipoElement.innerHTML = ""; // Eliminar la opción de carga
+
+                const errorOption = document.createElement("option");
+                errorOption.value = "";
+                errorOption.text = "Error al cargar artículos";
+                errorOption.disabled = true;
+                errorOption.selected = true;
+                tipoElement.appendChild(errorOption);
+            }
+
+        } else { // Cualquier otro valor
+            // Crear el elemento <input> de tipo texto
+            tipoElement = document.createElement("input");
+            tipoElement.type = "text";
+            tipoElement.placeholder = "Tipo de paquete";
+            tipoElement.classList.add("tipoPaquete");
+        }
+
+        paqueteDiv.appendChild(tipoElement);
 
         const cantidadInput = document.createElement("input");
         cantidadInput.type = "number";
         cantidadInput.placeholder = "Cantidad de etiquetas";
         cantidadInput.classList.add("cantidadPaquete");
 
-        paqueteDiv.appendChild(tipoInput);
         paqueteDiv.appendChild(cantidadInput);
 
         const hr = document.createElement("hr");
@@ -249,5 +381,8 @@ document.addEventListener("DOMContentLoaded", function () {
             sucursalesSelect.disabled = false;
             Direccion_Destinatario.disabled = false;
         }
+
+        // Opcional: Limpiar paquetes si cambias el tipo de entrega
+        // document.getElementById("paquetesContainer").innerHTML = "";
     });
 });
