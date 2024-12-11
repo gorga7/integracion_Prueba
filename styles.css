@@ -1,11 +1,16 @@
 
-body {
-    font-family: 'system-ui', sans-serif;
-    background: linear-gradient(120deg, #e8f5e9, #f1f8e9);
-    color: #333333;
-    margin: 0;
-    padding: 0;
-}
+#movable-button {
+    position: absolute; /* Permite el uso de 'left' y 'top' */
+    padding: 10px 20px;
+    background-color: #dc3545; /* Color de Bootstrap 'btn-danger' */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* Opcional: Añadir una transición suave */
+    transition: transform 0.1s linear;
+  }
+
 /* Logo */
 .logo {
     width: 160px;

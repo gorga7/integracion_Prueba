@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let angle = 0; // Ángulo para la animación sinusoidal
 
-    function moveButton(timestamp) {
+    function moveButton() {
         // Calcula la nueva posición del botón usando una función sinusoidal para movimiento suave
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    //Actualizar fecha en tiempo real
+    // Actualizar fecha en tiempo real
     function actualizarFechaHora() {
         var fechaHoraActual1 = new Date();
         var fechaHoraString1 = fechaHoraActual1.toLocaleString();
@@ -44,23 +44,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // Llamar a la función inicialmente para evitar un retraso de un segundo
     actualizarFechaHora();
 
-
-
-})
+});
 
 
 function openSettings(option) {
-    // Simplemente para este ejemplo, mostraremos un mensaje indicando qué opción fue seleccionada
+    // Muestra un mensaje indicando qué opción fue seleccionada
     let settingsContent = document.getElementById("settings-content");
     settingsContent.innerHTML =
         "<p>Seleccionaste la opción " +
         option +
-        ". Los detalles de la configuración se mostrarían aquí.</p>";
+        ". Los detalles de la configuración se mostrarían aquí.</p>" +
+        "<button onclick=\"exitSettings()\">Salir</button>";
 }
 
 function exitSettings() {
-    // Simplemente para este ejemplo, mostraremos un mensaje de despedida
+    // Muestra un mensaje de despedida
     let settingsContent = document.getElementById("settings-content");
     settingsContent.innerHTML =
-        "<p>¡Hasta luego! Gracias por usar nuestro sistema de ajustes.</p>";
+        "<p>¡Hasta luego! Gracias por usar nuestro sistema de ajustes.</p>" +
+        "<button onclick=\"openSettings('Opción 1')\">Opción 1</button>" +
+        "<button onclick=\"openSettings('Opción 2')\">Opción 2</button>";
 }
